@@ -23,6 +23,29 @@ namespace SmarTreaty.Controllers
             return View();
         }
 
+        [Route("register")]
+        public ActionResult Register()
+        {
+            //ViewBag.CourseGroupsList = new SelectList(_courseGroupService.GetCourseGroups(), "Id", "Name");
+            var model = new RegisterViewModel();
+            return View(model);
+        }
+
+        [Route("register")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterViewModel registerViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _userService.AddUser(registerViewModel.GetUser());
+                _userService.Save();
+                return RedirectToAction("Login");
+            }
+
+            return View(registerViewModel);
+        }
+
         [Route("login")]
         [HttpPost]
         public ActionResult Login(LoginViewModel userLoginVm)
