@@ -1,0 +1,63 @@
+﻿@using SmarTreaty.Enums
+@model SmarTreaty.Model.Core.Course
+
+@{
+    ViewBag.Title = "Delete course: " + Model.Name;
+}
+
+<div class="px-3">
+    <h3>Are you sure you want to delete this course?</h3>
+    <hr/>
+    <dl class="dl-horizontal table-warning p-2">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            New Course
+        </dt>
+
+        <dd>
+            @(Model.IsNew ? "Yes" : "No")
+        </dd>
+
+        <dt>
+            Type
+        </dt>
+
+        <dd>
+            @((CourseTypeEnum) Model.TypeCode)
+        </dd>
+
+        <dt>
+            Schedule
+        </dt>
+
+        <dd>
+            @((CoursePlanningMethodEnum) Model.PlanningMethodCode)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Cancel", "Index", null, new {@class = "btn btn-warning"})
+            <input type="submit" value="Delete" class="btn btn-danger float-right"/>
+        </div>
+    }
+</div>

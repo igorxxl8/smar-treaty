@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>HTTP Error 400 - Bad Request</title>
+    @Styles.Render("~/Content/bootstrap.css")
+</head>
+<body>
+<div class="m-5 align-content-center w-50">
+    <h2>Error 400 - Bad Request</h2>
+    <h4>The request URL is invalid</h4>
+    <hr/>
+    @Html.ActionLink("Go Home", "Index", "Home", null, new {@class = "btn btn-primary"})
+</div>
+</body>
+</html>

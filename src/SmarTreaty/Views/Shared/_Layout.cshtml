@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SmarTreaty</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/cmsys.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+<aside>
+    <nav id="sidebar" data-spy="scroll" class="bg-light">
+        <div id="sidebar-header" class="sidebar-header">
+            <div class="pt-2">
+                <div class="d-flex pt-1 px-2">
+                    <h3>
+                        @Html.ActionLink("SmarTreaty", "Index", "Home", new { area = "" }, new { @class = "navbar-brand nav-link-a" })
+                    </h3>
+                    
+                    <div class="my-auto">
+                        <nav class="navbar bg-light">
+                            <a class="dropdown-toggle" href="#" data-toggle="collapse" role="button" data-target="#navbarUser" aria-controls="navbarUser" aria-expanded="true" aria-label="Toggle navigation">
+                                @HttpContext.Current.User.Identity.Name
+                            </a>
+                            <div class="dropdown-menu" id="navbarUser">
+                                @Html.ActionLink("Sign out", "SignOut", "Account", new {area = ""}, new {@class = "dropdown-item"})
+                            </div>
+                        </nav>
+                    </div>
+
+                    <div class="ml-auto pt-1">
+                        <button id="closeSidebar" type="button" title="Close sidebar" class="btn rounded-circle font-weight-bold">
+                            &times;
+                        </button>
+                    </div>
+                </div>
+                <hr />
+            </div>
+        </div>
+        
+        <div>
+            <ul style="list-style: none; padding: 0;">
+                <li>
+                    @Html.ActionLink("Courses", "Index", "Courses", new {area = ""}, new {@class = "h4 nav-link nav-link-a"})
+                </li>
+                <li>
+                    @Html.ActionLink("Trainers", "Index", "TrainerGroups", new {area = ""}, new {@class = "h4 nav-link nav-link-a"})
+                </li>
+            </ul>
+        </div>
+        
+        @if (HttpContext.Current.User.IsInRole("admin"))
+        {
+
+        <nav class="navbar bg-light">
+            <a class="nav-link-a h4 w-100" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                Admin
+            </a>
+            <div class="navbar-collapse collapse show" id="navbarSupportedContent">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Courses", "Index", "Courses", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
+                    </li>
+                    <li>
+                        @Html.ActionLink("Course groups", "Index", "CourseGroups", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
+                    </li>
+                    <li>
+                        @Html.ActionLink("Trainer groups", "Index", "TrainerGroups", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
+                    </li>
+                    
+                    <li>
+                        @Html.ActionLink("Trainers", "Index", "Trainers", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
+                    </li>
+                    <li>
+                        @Html.ActionLink("Users", "Index", "Users", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        }
+    </nav>
+</aside>
+
+<nav class="navbar fixed-top shadow">
+    <div class="d-flex flex-row align-items-center w-100">
+        <button id="sidebarCollapse" class="btn rounded-circle navbar-button">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+        <div id="nav-title" class="px-3 text-truncate text-light h4">
+            @ViewBag.Title
+        </div>
+    </div>
+</nav>
+
+
+<div class="body-content px-4 mx-5 py-4">
+    @RenderBody()
+    <div class="overlay"></div>
+    <div class="fixed-bottom bg-light p-3">
+        <footer>
+            <p>&copy; @DateTime.Now.Year - SmarTreaty - Igor Turtsevich</p>
+        </footer>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/Scripts/_layout.js")
+@RenderSection("scripts", false)
+</body>
+</html>

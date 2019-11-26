@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<SmarTreaty.ViewModels.Users.IndexUserViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css"/>
+
+@{
+    ViewBag.Title = "Users";
+}
+<div class="px-2">
+    @using (Html.BeginForm("Index", "Users", FormMethod.Get))
+    {
+        <div class="d-flex py-3">
+            @Html.TextBox("Search", null, new { autocomplete = "off", @class = "form-control w-50 mr-3", placeholder = "Type user name for search" })
+            <input class="btn btn-primary" type="submit" value="Search" />
+        </div>
+    }
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    <table class="table table-bordered">
+        <thead class="table-warning">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Photo
+                </th>
+                <th>
+                    Department
+                </th>
+                <th>
+                    Position
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Active
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width: 300px;">
+                    @item.Name
+                </td>
+                <td style="width: 90px;">
+                    @{
+                        var base64String = Convert.ToBase64String(item.Photo);
+                        <img class="card-img-top" src="@string.Format($"data:image/png;base64,{base64String}")" alt="Card image cap">
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td style="width: 50px;"></td>
+                <td style="width: 200px;">
+                    @Html.ActionLink("Profile", "Details", new { id = item.Id }, new { @class = "btn btn-primary m-1" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning m-1" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

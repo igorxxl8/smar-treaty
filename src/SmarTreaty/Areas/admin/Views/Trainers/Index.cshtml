@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SmarTreaty.ViewModels.Trainers.IndexTrainerViewModel>
+
+@{
+    ViewBag.Title = "Trainers";
+}
+    <div class="px-2 pb-5">
+        @using (Html.BeginForm("Index", "Trainers", FormMethod.Get))
+        {
+            <div class="d-flex py-3">
+                @Html.TextBox("Search", null, new { autocomplete = "off", @class = "form-control w-50 mr-3", placeholder = "Type user name for search" })
+                <input class="btn btn-primary" type="submit" value="Search" />
+                @Html.ActionLink("Add trainer", "Create", null, new { @class = "btn btn-primary ml-auto" })
+            </div>
+        }
+
+        <table class="table table-bordered">
+            <thead class="table-warning">
+                <tr>
+                    <th>
+                        Group
+                    </th>
+                    <th>
+                        Photo
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Info)
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="width: 100px">
+                        @Html.DisplayFor(modelItem => item.TrainerGroup.Name)
+                    </td>
+                    <td style="width: 90px;">
+                        @{
+                            var base64String = Convert.ToBase64String(item.User.Photo);
+                            <img class="card-img-top" src="@string.Format($"data:image/png;base64,{base64String}")" alt="Card image cap">
+                        }
+                    </td>
+                    <td style="width: 200px;">
+                        @item.User.FirstName @item.User.LastName
+                    </td>
+                    <td class="w-50">
+                        @Html.DisplayFor(modelItem => item.Info)
+                    </td>
+                    <td style="width: 175px;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning m-1" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger m-1" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>

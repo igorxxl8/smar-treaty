@@ -1,0 +1,123 @@
+﻿.navbar { background-color: #222; }
+
+hr {
+    background: #9d9d9d;
+    margin-top: .5rem;
+}
+
+#sidebar {
+    background: white;
+    height: 100vh;
+    left: -300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    transition: left 0.3s;
+    width: 300px;
+    z-index: 9999;
+}
+
+#sidebar.active { left: 0; }
+
+.forw-arrow {
+    background: inherit;
+    border: none;
+    height: 60px;
+    transition: background .4s;
+    width: 60px;
+}
+
+.forw-arrow:hover { background: lightgrey; }
+
+.forw-arrow:focus { outline: none; }
+
+.h3, .h4 { margin-bottom: .25rem; }
+
+.nav-link-a { color: black; cursor: pointer }
+
+.nav-link-a:hover {
+    color: darkgrey;
+    text-decoration: none;
+}
+
+.overlay {
+    background-color: #212121;
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 0.5;
+    z-index: 9998;
+}
+
+#sidebar .sidebar-header {
+    cursor: default;
+    margin-bottom: -17px;
+    width: 100%;
+}
+
+#sidebar tr { cursor: pointer; }
+
+.navbar-button {
+    display: inline-block;
+    font-size: 35px;
+    height: 50px;
+    text-align: center;
+    vertical-align: bottom;
+    width: 50px;
+}
+
+
+.navbar-button:hover { background: rgba(245, 245, 245, 0.3); }
+
+.navbar-button .line {
+    background-color: #fff;
+    float: right;
+    height: 4px;
+    width: 100%;
+}
+
+.navbar-button .line:not(:last-child) { margin-bottom: 5px; }
+
+.custom-control.custom-checkbox { padding-left: 0; }
+
+.custom-control.custom-checkbox.no-pad {
+    padding-left: 1.5rem;
+}
+
+label.custom-control-label.ccl-right {
+    padding-right: 1.5rem;
+    position: relative;
+}
+
+label.custom-control-label.ccl-right::before, label.custom-control-label.ccl-right::after {
+    left: auto;
+    right: 0;
+}
+
+#filter > .flex-fill { margin: 10px; }
+
+#label { margin-bottom: 0 !important; }
+
+.dropdown-item.active,
+.dropdown-item:active {
+    color: black !important;
+    text-decoration: none !important;
+    background-color: white !important;
+}
+
+#sidebar li:hover {
+    background: black;
+}
+
+li > .nav-link-a:hover {
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,33 @@
+﻿@model SmarTreaty.ViewModels.Accounts.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<div class="w-50 m-auto" style="padding-top: 20vh;">
+    @using (Html.BeginForm("Login","Account",FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.ReturnUrl)
+        <div class="m-auto" style="max-width: 400px;">
+        <h2 class="col-md-10">Log in</h2>
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control m-auto", autocomplete = "off", placeholder = "Email" } })
+                @Html.ValidationMessageFor(model => model.Email, "",new {@class="text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control m-auto", autocomplete = "off", placeholder = "Password"} })
+                @Html.ValidationMessageFor(model => model.Password, "", new {@class="text-danger"})
+            </div>
+        </div>
+        @Html.ValidationSummary(true, "", new {@class="text-danger"})
+        <div class="col-md-10">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        </div>
+    }
+</div>

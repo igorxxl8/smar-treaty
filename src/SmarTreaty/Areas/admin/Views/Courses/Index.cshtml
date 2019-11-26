@@ -1,0 +1,142 @@
+﻿@using SmarTreaty.Helpers.Extensions
+@model IEnumerable<SmarTreaty.ViewModels.Courses.IndexCourseViewModel>
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+@using (Html.BeginForm("Index", "Courses", FormMethod.Get))
+{
+    <div id="filter" class="d-flex align-items-center">
+        <div class="flex-fill">
+            @Html.DropDownList("CourseGroups", ViewBag.CourseGroupsList as SelectList, new { @class = "form-control" })
+        </div>
+        <div class="flex-fill">
+            @Html.TextBox("Search", null, new { autocomplete = "off", @class = "form-control", placeholder = "Type course name for filter" })
+        </div>
+
+        <div class="flex-fill">
+            @Html.DropDownList("Type", ViewBag.TypeCodes as SelectList, new { @class = "form-control" })
+        </div>
+
+        <div class="flex-fill">
+            @Html.DropDownList("Arrangement", ViewBag.PlanningMethods as SelectList, new { @class = "form-control" })
+        </div>
+        <input type="submit" value="Filter" class="btn btn-primary" />
+    </div>
+}
+
+<div class="float-right p-2">
+    <button id="getDocsCourses" class="btn btn-primary">
+        Get courses in Docx
+    </button>
+    <a class="btn btn-primary" title="Create course" href="@Url.Action("Create", "Courses")">
+        Add Course
+    </a>
+</div>
+
+<div class="px-2">
+    <table id="coursesTable" class="table table-bordered mb-5">
+        <thead>
+            <tr class="table-warning">
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TypeCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlanningMethodCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Trainers)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        <b>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </b>
+                    </td>
+                    <td style="width: 150px;">
+                        @Html.DisplayFor(modelItem => item.TypeCode)
+                    </td>
+                    <td style="width: 150px;">
+                        @item.PlanningMethodCode.GetDisplayName()
+                    </td>
+                    <td rowspan="2" style="width: 200px;">
+                        @foreach (var trainer in item.Trainers)
+                        {
+                            var user = trainer.User;
+                            var base64String = Convert.ToBase64String(user.Photo);
+                            var photoSrc = string.Format($"data:image/png;base64,{base64String}");
+                            <a href="" onclick="loadTrainerInModal('@user.FirstName', '@user.LastName', '@trainer.Info', '@photoSrc')" data-toggle="modal" data-target="#trainerInfo">@user.FirstName @user.LastName</a>
+                            <br />
+                        }
+                        <br />
+                        @Html.ActionLink("Update", "UpdateTrainersForCourse", new { id = item.Id }, new { @class = "btn btn-warning m-2" })
+
+                    </td>
+                    <td rowspan="2" style="width: 50px;">
+                        <div class="m-auto align-content-center">
+                            @Html.ActionLink("Info", "Details", new { id = item.Id }, new { @class = "btn btn-info m-2" })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning m-2" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger m-2" })
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+            </tbody>
+        }
+
+    </table>
+</div>
+
+<div id="trainerInfo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Trainer Info</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex">
+                    <div>
+                        <h1 id="name"></h1>
+                        <p id="info"></p>
+                    </div>
+                    <div class="ml-auto">
+                        <img id="photo" alt="Trainer photo" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" language="javascript">
+    $("#getDocsCourses").click(() => {
+        window.location.href = "/api/courses/docx/false";
+    });
+
+        function loadTrainerInModal(firstName, lastName, info, photo) {
+            $("#name").html(firstName + " " + lastName);
+            $("#info").html(info);
+            $("#photo").attr("src", photo);
+        }
+    </script>
+}

@@ -1,0 +1,45 @@
+﻿@model SmarTreaty.ViewModels.Trainers.DeleteTrainerViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="px-2">
+    <h3>Are you sure you want to delete this trainer?</h3>
+    <dl class="dl-horizontal table-warning p-2">
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Model.User.FirstName @Model.User.LastName
+        </dd>
+
+        <dt>
+            Group
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainerGroup.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Info)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Cancel", "Index", null, new {@class = "btn btn-primary"})
+            <input type="submit" value="Delete" class="btn btn-danger float-right"/>
+        </div>
+    }
+</div>

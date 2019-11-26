@@ -1,0 +1,98 @@
+﻿@using SmarTreaty.Model.Core
+@model SmarTreaty.ViewModels.Users.EditUserViewModel
+
+@{
+    ViewBag.Title = "Edit: " + Model.FirstName + " " + Model.LastName;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="py-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, new { @class = "font-weight-bold col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, new { @class = "font-weight-bold col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="d-flex">
+                @Html.LabelFor(model => model.Roles, new {@class = "font-weight-bold col-md-2"})
+                <div id="roleInfo" class="text-success"></div>
+            </div>
+            <div class="col-md-10">
+                @foreach (Role role in ViewBag.Roles)
+                {
+                    <div class="custom-control custom-checkbox no-pad">
+                        @if (role.Name == "user")
+                        {
+                            @Html.CheckBox(role.Name, Model.Roles.Contains(role), new {@class = "custom-control-input", disabled = "", value = role.Id})
+                        }
+                        else
+                        {
+                            @Html.CheckBox(role.Name, Model.Roles.Contains(role), new {@class = "custom-control-input", value = role.Id})
+                        }
+                        <label class="custom-control-label  font-weight-bold" for="@role.Name">
+                            @role.Name
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2 col-md-10">
+                <input type="button" onclick="history.back()" value="Back" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts {
+        <script type="text/javascript" language="javascript">
+        $(document).ready(() => {
+            $('input[type="checkbox"]').click((e) => {
+                var checkbox = e.target;
+                var isChecked = !checkbox.checked;
+                var id = checkbox.value;
+                var name = checkbox.id;
+                var route = `/api/roles/${id}/users/${isChecked}`;
+                $.ajax(
+                    {
+                        async: true,
+                        url: route,
+                        method: "PUT",
+                        crossDomain: true,
+                        processData: false,
+                        headers: {
+                            "content-type": "application/json",
+                            "cache-control": "no-cache"
+                        },
+                        data: JSON.stringify({ "Id": "@Model.Id" }),
+                        success: () => {
+                            if (!isChecked) {
+                                $("#roleInfo").text(`${name} permissions added!`);
+                            } else {
+                                $("#roleInfo").text(`${name} permissions removed!`);
+                            }
+                            setTimeout(() => {
+                                $("#roleInfo").text("");
+                            }, 3000);
+                        }
+                    });
+            });
+        });
+        </script>
+}

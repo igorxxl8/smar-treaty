@@ -1,0 +1,4 @@
+﻿@{
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+    Layout = controller == "Error" ? null : "~/Views/Shared/_Layout.cshtml";
+}
