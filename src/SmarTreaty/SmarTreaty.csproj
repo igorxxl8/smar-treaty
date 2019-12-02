@@ -183,6 +183,7 @@
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\api\Controllers\RolesApiController.cs" />
     <Compile Include="Areas\api\Models\DTO\RoleDTO.cs" />
     <Compile Include="Areas\api\Models\DTO\UserDTO.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -301,7 +302,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Models\" />
-    <Folder Include="Areas\api\Controllers\" />
     <Folder Include="Areas\api\Views\Shared\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
