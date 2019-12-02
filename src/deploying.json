@@ -1,0 +1,69 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appService_SmarTreaty20191203120622_name": {
+      "type": "string"
+    },
+    "appServicePlan_SmarTreaty20191203120622Plan_location": {
+      "type": "string"
+    },
+    "appServicePlan_SmarTreaty20191203120622Plan_name": {
+      "type": "string"
+    },
+    "appServicePlan_SmarTreaty20191203120622Plan_resourceGroup": {
+      "type": "string"
+    },
+    "appServicePlan_SmarTreaty20191203120622Plan_skuName": {
+      "type": "string"
+    },
+    "appServicePlan_SmarTreaty20191203120622Plan_skuTier": {
+      "type": "string"
+    },
+    "appServicePlan_SmarTreaty20191203120622Plan_skuFamily": {
+      "type": "string"
+    },
+    "appServicePlan_SmarTreaty20191203120622Plan_skuSize": {
+      "type": "string"
+    },
+    "appServicePlan_SmarTreaty20191203120622Plan_workerSizeId": {
+      "type": "int"
+    }
+  },
+  "resources": [
+    {
+      "location": "[parameters('appServicePlan_SmarTreaty20191203120622Plan_location')]",
+      "name": "[parameters('appService_SmarTreaty20191203120622_name')]",
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2015-08-01",
+      "tags": {
+        "[concat('hidden-related:', resourceId(parameters('appServicePlan_SmarTreaty20191203120622Plan_resourceGroup'),'Microsoft.Web/serverfarms', parameters('appServicePlan_SmarTreaty20191203120622Plan_name')))]": "empty"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverFarms', parameters('appServicePlan_SmarTreaty20191203120622Plan_name'))]"
+      ],
+      "kind": "app",
+      "properties": {
+        "name": "[parameters('appService_SmarTreaty20191203120622_name')]",
+        "kind": "app",
+        "httpsOnly": true,
+        "serverFarmId": "[resourceId(parameters('appServicePlan_SmarTreaty20191203120622Plan_resourceGroup'),'Microsoft.Web/serverfarms', parameters('appServicePlan_SmarTreaty20191203120622Plan_name'))]"
+      }
+    },
+    {
+      "location": "[parameters('appServicePlan_SmarTreaty20191203120622Plan_location')]",
+      "name": "[parameters('appServicePlan_SmarTreaty20191203120622Plan_name')]",
+      "type": "Microsoft.Web/serverFarms",
+      "apiVersion": "2015-08-01",
+      "sku": {
+        "name": "[parameters('appServicePlan_SmarTreaty20191203120622Plan_skuName')]",
+        "tier": "[parameters('appServicePlan_SmarTreaty20191203120622Plan_skuTier')]",
+        "family": "[parameters('appServicePlan_SmarTreaty20191203120622Plan_skuFamily')]",
+        "size": "[parameters('appServicePlan_SmarTreaty20191203120622Plan_skuSize')]"
+      },
+      "properties": {
+        "name": "[parameters('appServicePlan_SmarTreaty20191203120622Plan_name')]"
+      }
+    }
+  ]
+}
