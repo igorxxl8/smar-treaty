@@ -5,7 +5,7 @@ using SmarTreaty.Common.DomainModel;
 
 namespace SmarTreaty.ViewModels.Users
 {
-    public class EditUserViewModel : IValidatableObject
+    public class EditUserViewModel //: IValidatableObject
     {
         public EditUserViewModel()
         {
@@ -17,36 +17,33 @@ namespace SmarTreaty.ViewModels.Users
             Id = user.Id;
             FirstName = user.FirstName;
             LastName = user.LastName;
-            StartDate = user.StartDate;
-            EndDate = user.EndDate;
+            MiddleName = user.MiddleName;
+            RegistrationDate = user.RegistrationDate;
             Roles = user.Roles;
         }
 
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        [Display(Name = "Start Date")]
+        public string MiddleName { get; set; }
+        [Display(Name = "Registration Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
-        public DateTime StartDate { get; set; }
-        [Display(Name = "End Date")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.Date)]
-        public DateTime? EndDate { get; set; }
+        public DateTime RegistrationDate { get; set; }
         public ICollection<Role> Roles { get; set; }
 
         public void UpdateUser(User user)
         {
-            user.StartDate = StartDate;
-            user.EndDate = EndDate;
+            user.RegistrationDate = RegistrationDate;
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (EndDate != null && EndDate < StartDate)
-            {
-                yield return new ValidationResult(errorMessage: "End Date must be greater than Start Date", memberNames: new [] {"EndDate"});
-            }
-        }
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    return null;
+        //    //if (EndDate != null && EndDate < RegistrationDate)
+        //    //{
+        //    //    yield return new ValidationResult(errorMessage: "End Date must be greater than Start Date", memberNames: new [] {"EndDate"});
+        //    //}
+        //}
     }
 }

@@ -121,22 +121,9 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="Scripts" />
-    <Folder Include="Scripts\Post-Deployment" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\User.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="dbo\Tables\TrainerGroup.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="dbo\Tables\TrainerCourse.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="dbo\Tables\Trainer.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
@@ -148,27 +135,17 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="dbo\Tables\CourseGroup.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="dbo\Tables\Course.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <None Include="Scripts\Post-Deployment\dbo.User.Table.sql" />
-    <None Include="Scripts\Post-Deployment\dbo.TrainerGroup.Table.sql" />
-    <None Include="Scripts\Post-Deployment\dbo.TrainerCourse.Table.sql" />
-    <None Include="Scripts\Post-Deployment\dbo.Trainer.Table.sql" />
-    <None Include="Scripts\Post-Deployment\dbo.RoleUser.Table.sql" />
-    <None Include="Scripts\Post-Deployment\dbo.Role.Table.sql" />
-    <None Include="Scripts\Post-Deployment\dbo.CourseGroup.Table.sql" />
-    <None Include="Scripts\Post-Deployment\dbo.Course.Table.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="Scripts\Post-Deployment\PostDeployment.sql" />
+    <None Include="Scripts\dbo.Role.Table.sql" />
+    <None Include="Scripts\dbo.RoleUser.Table.sql" />
+    <None Include="Scripts\dbo.User.Table.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SmarTreaty.Database.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="SmarTreaty.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

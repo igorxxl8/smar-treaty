@@ -42,9 +42,9 @@ namespace SmarTreaty
 
             try
             {
-                var email = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value)?.Name;
+                var login = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value)?.Name;
                 var userService = (IUserService) _ninjectResolver.GetService(typeof(IUserService));
-                var user = userService.GetUser(email);
+                var user = userService.GetUser(login);
                 if (user == null)
                 {
                     return;
@@ -58,7 +58,7 @@ namespace SmarTreaty
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, name, ClaimValueTypes.String, null),
-                        new Claim(ClaimTypes.Email, email, ClaimValueTypes.String, null),
+                        new Claim(ClaimTypes.Email, login, ClaimValueTypes.String, null),
                     };
                     foreach (var role in roles)
                     {

@@ -26,7 +26,13 @@
         </div>
         @Html.ValidationSummary(true, "", new {@class="text-danger"})
         <div class="col-md-10">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <div class="d-flex mt-2">
+                <div class="mx-auto">
+                    Don't have an account?
+                    @Html.ActionLink("Sign up", "Register", null, new { @class = "ml-2" })
+                </div>
+            </div>
         </div>
         </div>
     }

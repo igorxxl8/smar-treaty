@@ -9,6 +9,7 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
 :r .\dbo.Role.Table.sql
 go
 
@@ -16,19 +17,4 @@ go
 go
 
 :r .\dbo.RoleUser.Table.sql
-go
-
-:r .\dbo.TrainerGroup.Table.sql
-go
-
-:r .\dbo.Trainer.Table.sql
-go
-
-:r .\dbo.CourseGroup.Table.sql
-go
-
-:r .\dbo.Course.Table.sql
-go
-
-:r .\dbo.TrainerCourse.Table.sql
 go

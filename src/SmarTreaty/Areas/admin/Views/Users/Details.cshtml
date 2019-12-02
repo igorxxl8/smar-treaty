@@ -24,51 +24,27 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.Login)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Email)
+                @Html.DisplayFor(model => model.Login)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.StartDate)
+                @Html.DisplayNameFor(model => model.RegistrationDate)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.StartDate)
+                @Html.DisplayFor(model => model.RegistrationDate)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.EndDate)
+                @Html.DisplayNameFor(model => model.Wallet)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.EndDate)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Department)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Department)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Location)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Location)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Position)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Position)
+                @Html.DisplayFor(model => model.Wallet)
             </dd>
 
 
@@ -76,8 +52,8 @@
         <dl class="flex-fill">
             <dd style="width: 300px;">
                 @{
-                    var base64String = Convert.ToBase64String(Model.Photo);
-                    <img class="card-img-top" src="@string.Format($"data:image/png;base64,{base64String}")" alt="Card image cap">
+                    @*var base64String = Convert.ToBase64String(Model.Photo);
+                    <img class="card-img-top" src="@string.Format($"data:image/png;base64,{base64String}")" alt="Card image cap">*@
                 }
             </dd>
         </dl>

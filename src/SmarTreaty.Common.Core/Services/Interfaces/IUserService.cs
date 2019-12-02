@@ -13,8 +13,8 @@ namespace SmarTreaty.Core.Services.Interfaces
             string properties = "");
 
         User GetUser(Guid id);
-        User GetUser(string email);
-        string TryLogin(string email, string password, Func<string,string,string> hashingCallback);
+        User GetUser(string login);
+        string TryLogin(string login, string password, Func<string,string,string> hashingCallback);
         void AddUser(User user);
         void UpdateUser(User user);
         void DeleteUser(User user);

@@ -26,9 +26,7 @@ namespace SmarTreaty.Controllers
         [Route("register")]
         public ActionResult Register()
         {
-            //ViewBag.CourseGroupsList = new SelectList(_courseGroupService.GetCourseGroups(), "Id", "Name");
-            var model = new RegisterViewModel();
-            return View(model);
+            return View();
         }
 
         [Route("register")]
@@ -36,14 +34,15 @@ namespace SmarTreaty.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel registerViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _userService.AddUser(registerViewModel.GetUser());
-                _userService.Save();
-                return RedirectToAction("Login");
+                return View(registerViewModel);
             }
 
-            return View(registerViewModel);
+            var user = registerViewModel.GetUser();
+            _userService.AddUser(user);
+            _userService.Save();
+            return RedirectToAction("Login");
         }
 
         [Route("login")]
@@ -70,7 +69,7 @@ namespace SmarTreaty.Controllers
                 return Redirect(userLoginVm.ReturnUrl);
             }
 
-            return RedirectToAction("Index", "Courses", new {area=""});
+            return RedirectToAction("Index", "Contracts", new {area=""});
         }
 
         [Route("signout")]

@@ -1,22 +1,20 @@
+using System;
+using System.Web;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
+using Ninject;
+using Ninject.Web.Common;
+using Ninject.Web.Common.WebHost;
+using SmarTreaty.Business.Services;
+using SmarTreaty.Common.Core.Helpers.Interfaces;
+using SmarTreaty.Core.Services.Interfaces;
+using SmartTreaty.Data.DataAccess.Helpers;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SmarTreaty.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(SmarTreaty.App_Start.NinjectWebCommon), "Stop")]
 
 namespace SmarTreaty.App_Start
 {
-    using System;
-    using System.Web;
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-    using Ninject.Web.Common.WebHost;
-    using SmarTreaty.Business.Data.Helpers;
-    using SmarTreaty.Business.Services;
-    using SmarTreaty.Common.Core.Helpers.Interfaces;
-    using SmarTreaty.Core.Services.Interfaces;
-
     public static class NinjectWebCommon 
     {
         internal static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -69,11 +67,7 @@ namespace SmarTreaty.App_Start
             kernel.Bind<IDatabaseWorkUnit>().To<DatabaseWorkUnit>().WithConstructorArgument("name=DataContext");
             var databaseWorkUnit = kernel.Get<IDatabaseWorkUnit>();
 
-            kernel.Bind<ICourseService>().To<CourseService>().WithConstructorArgument(databaseWorkUnit);
-            kernel.Bind<ICourseGroupService>().To<CourseGroupsService>().WithConstructorArgument(databaseWorkUnit);
             kernel.Bind<IRoleService>().To<RoleService>().WithConstructorArgument(databaseWorkUnit);
-            kernel.Bind<ITrainerGroupService>().To<TrainerGroupService>().WithConstructorArgument(databaseWorkUnit);
-            kernel.Bind<ITrainerService>().To<TrainerService>().WithConstructorArgument(databaseWorkUnit);
             kernel.Bind<IUserService>().To<UserService>().WithConstructorArgument(databaseWorkUnit);
         }        
     }

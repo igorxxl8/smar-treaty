@@ -5,18 +5,14 @@ namespace SmarTreaty.Common.DomainModel
 {
     public class User : Entity<Guid>
     {
-        public string Email { get; set; }
+        public string Login { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public string Department { get; set; }
-        public string Location { get; set; }
-        public string Position { get; set; }
-        public byte[] Photo { get; set; }
+        public string MiddleName { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public string Wallet { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
-        public virtual Trainer Trainer { get; set; }
     }
 }

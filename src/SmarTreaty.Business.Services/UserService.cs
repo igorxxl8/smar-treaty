@@ -51,14 +51,14 @@ namespace SmarTreaty.Business.Services
             Db.Users.Remove(id);
         }
 
-        public User GetUser(string email)
+        public User GetUser(string login)
         {
-            return Db.Users.Get(u => u.Email == email, properties:"Roles,Trainer").First();
+            return Db.Users.Get(u => u.Login == login, properties: "Roles").First();
         }
 
-        public string TryLogin(string email, string password, Func<string,string,string> hashingCallback)
+        public string TryLogin(string login, string password, Func<string, string, string> hashingCallback)
         {
-            var users = GetUsers(u => u.Email == email)
+            var users = GetUsers(u => u.Login == login)
                 .Where(u => u.PasswordHash == hashingCallback(password, u.PasswordSalt));
 
             if (users.Any())

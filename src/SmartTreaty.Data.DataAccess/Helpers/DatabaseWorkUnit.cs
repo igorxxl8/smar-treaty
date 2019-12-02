@@ -1,22 +1,20 @@
-﻿using System;
-using System.Data.Entity;
-using SmarTreaty.Business.Data.Context;
+﻿using SmarTreaty.Business.Data.Context;
 using SmarTreaty.Business.Data.Repository;
 using SmarTreaty.Common.Core.Helpers.Interfaces;
 using SmarTreaty.Common.Core.Repository.Interfaces;
 using SmarTreaty.Common.DomainModel;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Text;
 
-namespace SmarTreaty.Business.Data.Helpers
+namespace SmartTreaty.Data.DataAccess.Helpers
 {
     public class DatabaseWorkUnit : IDatabaseWorkUnit
     {
         private readonly DataContext _context;
         private IRepository<User, Guid> _userRepository;
-        private IRepository<Course, Guid> _courseRepository;
-        private IRepository<CourseGroup, Guid> _courseGroupRepository;
         private IRepository<Role, int> _roleRepository;
-        private IRepository<TrainerGroup, Guid> _trainerGroupRepository;
-        private IRepository<Trainer, Guid> _trainerRepository;
 
         public DatabaseWorkUnit(string connectionString)
         {
@@ -28,19 +26,6 @@ namespace SmarTreaty.Business.Data.Helpers
 
         public IRepository<Role, int> Roles =>
             _roleRepository ?? (_roleRepository = new Repository<Role, int>(_context));
-
-        public IRepository<Trainer, Guid> Trainers =>
-            _trainerRepository ?? (_trainerRepository = new Repository<Trainer, Guid>(_context));
-
-        public IRepository<Course, Guid> Courses =>
-            _courseRepository ?? (_courseRepository = new Repository<Course, Guid>(_context));
-
-        public IRepository<CourseGroup, Guid> CourseGroups =>
-            _courseGroupRepository ?? (_courseGroupRepository = new Repository<CourseGroup, Guid>(_context));
-
-        public IRepository<TrainerGroup, Guid> TrainerGroups =>
-            _trainerGroupRepository ?? (_trainerGroupRepository = new Repository<TrainerGroup, Guid>(_context));
-
 
         public void Save()
         {

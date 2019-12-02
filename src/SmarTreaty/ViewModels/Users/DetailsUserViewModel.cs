@@ -11,13 +11,10 @@ namespace SmarTreaty.ViewModels.Users
             Id = user.Id;
             FirstName = user.FirstName;
             LastName = user.LastName;
-            Email = user.Email;
-            StartDate = user.StartDate;
-            EndDate = user.EndDate;
-            Department = user.Department;
-            Location = user.Location;
-            Position = user.Position;
-            Photo = user.Photo;
+            MiddleName = user.MiddleName;
+            Login = user.Login;
+            RegistrationDate = user.RegistrationDate;
+            Wallet = user.Wallet;
         }
 
         public Guid Id { get; set; }
@@ -25,16 +22,12 @@ namespace SmarTreaty.ViewModels.Users
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        public string Email { get; set; }
-        [Display(Name = "Start Date")]
+        [Display(Name = "Middle Name")]
+        public string MiddleName { get; set; }
+        public string Login { get; set; }
+        [Display(Name = "Registration Date")]
         [DataType(DataType.Date)]
-        public DateTime StartDate { get; set; }
-        [Display(Name = "End Date")]
-        [DataType(DataType.Date)]
-        public DateTime? EndDate { get; set; }
-        public string Department { get; set; }
-        public string Location { get; set; }
-        public string Position { get; set; }
-        public byte[] Photo { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public string Wallet { get; set; }
     }
 }

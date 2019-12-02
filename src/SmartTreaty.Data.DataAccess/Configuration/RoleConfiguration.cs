@@ -24,8 +24,8 @@ namespace SmarTreaty.Business.Data.Configuration
                 .Map(ru =>
                 {
                     ru.ToTable("RoleUser");
-                    ru.MapLeftKey("Role_Id");
-                    ru.MapRightKey("User_Id");
+                    ru.MapLeftKey("RoleId");
+                    ru.MapRightKey("UserId");
                 });
         }
     }

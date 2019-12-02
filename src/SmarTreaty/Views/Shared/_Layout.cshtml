@@ -43,10 +43,7 @@
         <div>
             <ul style="list-style: none; padding: 0;">
                 <li>
-                    @Html.ActionLink("Courses", "Index", "Courses", new {area = ""}, new {@class = "h4 nav-link nav-link-a"})
-                </li>
-                <li>
-                    @Html.ActionLink("Trainers", "Index", "TrainerGroups", new {area = ""}, new {@class = "h4 nav-link nav-link-a"})
+                    @Html.ActionLink("Contracts", "Index", "Contracts", new {area = ""}, new {@class = "h4 nav-link nav-link-a"})
                 </li>
             </ul>
         </div>
@@ -61,17 +58,7 @@
             <div class="navbar-collapse collapse show" id="navbarSupportedContent">
                 <ul>
                     <li>
-                        @Html.ActionLink("Courses", "Index", "Courses", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
-                    </li>
-                    <li>
-                        @Html.ActionLink("Course groups", "Index", "CourseGroups", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
-                    </li>
-                    <li>
-                        @Html.ActionLink("Trainer groups", "Index", "TrainerGroups", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
-                    </li>
-                    
-                    <li>
-                        @Html.ActionLink("Trainers", "Index", "Trainers", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
+                        @Html.ActionLink("Contracts", "Index", "Contracts", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
                     </li>
                     <li>
                         @Html.ActionLink("Users", "Index", "Users", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
@@ -102,7 +89,7 @@
     <div class="overlay"></div>
     <div class="fixed-bottom bg-light p-3">
         <footer>
-            <p>&copy; @DateTime.Now.Year - SmarTreaty - Igor Turtsevich</p>
+            <p>&copy; @DateTime.Now.Year - SmarTreaty - Igor Turtsevich, Anton Rekuts, Vitaly Vasiliev</p>
         </footer>
     </div>
 </div>

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SmarTreaty.Common.Core.Helpers.Interfaces;
+using SmarTreaty.Common.DomainModel;
+using SmarTreaty.Core.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using SmarTreaty.Common.Core.Helpers.Interfaces;
-using SmarTreaty.Common.DomainModel;
-using SmarTreaty.Core.Services.Interfaces;
+using System.Text;
 
 namespace SmarTreaty.Business.Services
 {

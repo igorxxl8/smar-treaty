@@ -1,5 +1,6 @@
 ﻿using SmarTreaty.Common.DomainModel;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SmarTreaty.ViewModels.Users
 {
@@ -8,18 +9,17 @@ namespace SmarTreaty.ViewModels.Users
         public IndexUserViewModel(User user)
         {
             Id = user.Id;
-            Name = user.FirstName + " " + user.LastName;
-            Photo = user.Photo;
-            Department = user.Department;
-            Position = user.Position;
-            Location = user.Location;
+            Name = user.FirstName + " " + user.LastName + " " + user.MiddleName;
+            Wallet = user.Wallet;
+            RegistrationDate = user.RegistrationDate;
         }
 
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public byte[] Photo { get; set; }
-        public string Department { get; set; }
-        public string Position { get; set; }
-        public string Location { get; set; }
+        public string Wallet { get; set; }
+
+        [Display(Name = "Registration Date")]
+        [DataType(DataType.Date)]
+        public DateTime RegistrationDate { get; set; }
     }
 }
