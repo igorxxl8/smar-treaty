@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SmarTreaty.ViewModels.Accounts
+namespace SmarTreaty.Common.ViewModels.Accounts
 {
     public class LoginViewModel
     {

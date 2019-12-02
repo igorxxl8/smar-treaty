@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using SmarTreaty.ViewModels.Users;
 using PagedList;
 using SmarTreaty.Core.Services.Interfaces;
 using SmarTreaty.Common.DomainModel;
+using SmarTreaty.Common.ViewModels.Users;
 
 namespace SmarTreaty.Areas.admin.Controllers
 {

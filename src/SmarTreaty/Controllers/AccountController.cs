@@ -1,7 +1,7 @@
 ﻿using SmarTreaty.Common.DomainModel;
 using SmarTreaty.Core.Services.Interfaces;
 using SmarTreaty.Helpers;
-using SmarTreaty.ViewModels.Accounts;
+using SmarTreaty.Common.ViewModels.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

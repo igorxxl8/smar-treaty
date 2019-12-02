@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmarTreaty.ViewModels.Accounts
+namespace SmarTreaty.Common.ViewModels.Accounts
 {
     public class RegisterViewModel
     {
@@ -16,7 +16,7 @@ namespace SmarTreaty.ViewModels.Accounts
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "The Middle Name field is required!")]
-        public string MiddleName { get;  set; }
+        public string MiddleName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -26,20 +26,20 @@ namespace SmarTreaty.ViewModels.Accounts
         [Compare("Password", ErrorMessage = "Passwords are not equal!")]
         [DataType(DataType.Password)]
         public string PasswordConfirmation { get; set; }
-        
+
         [Required]
         public string Wallet { get; set; }
 
         public User GetUser()
         {
-            return new User 
-            { 
-                  Login = Login,
-                  FirstName = FirstName,
-                  LastName = LastName,
-                  MiddleName = MiddleName,
-                  RegistrationDate = DateTime.Now,
-                  Wallet = Wallet          
+            return new User
+            {
+                Login = Login,
+                FirstName = FirstName,
+                LastName = LastName,
+                MiddleName = MiddleName,
+                RegistrationDate = DateTime.Now,
+                Wallet = Wallet
             };
         }
     }

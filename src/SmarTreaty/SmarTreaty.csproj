@@ -202,11 +202,6 @@
     <Compile Include="Helpers\PasswordHashing.cs" />
     <Compile Include="Helpers\PredicateBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Accounts\LoginViewModel.cs" />
-    <Compile Include="ViewModels\Accounts\RegisterViewModel.cs" />
-    <Compile Include="ViewModels\Users\DetailsUserViewModel.cs" />
-    <Compile Include="ViewModels\Users\EditUserViewModel.cs" />
-    <Compile Include="ViewModels\Users\IndexUserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -327,6 +322,10 @@
       <Project>{f81dcca8-49ee-448d-8086-7aa0a1623580}</Project>
       <Name>SmarTreaty.Common.DomainModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SmarTreaty.Common.ViewModels\SmarTreaty.Common.ViewModels.csproj">
+      <Project>{dee38453-d348-4768-a8bf-5011f65a350c}</Project>
+      <Name>SmarTreaty.Common.ViewModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SmartTreaty.Data.DataAccess\SmartTreaty.Data.DataAccess.csproj">
       <Project>{0E8010A1-8BA4-4478-896E-4C09CAED8FB3}</Project>
       <Name>SmartTreaty.Data.DataAccess</Name>
@@ -366,7 +365,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
+  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmarTreaty.ViewModels.Users
+namespace SmarTreaty.Common.ViewModels.Users
 {
     public class IndexUserViewModel
     {

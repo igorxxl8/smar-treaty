@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using SmarTreaty.Common.DomainModel;
 
-namespace SmarTreaty.ViewModels.Users
+namespace SmarTreaty.Common.ViewModels.Users
 {
     public class DetailsUserViewModel
     {

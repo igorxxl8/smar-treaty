@@ -13,13 +13,15 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SmarTreaty.Database", "Smar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C11E9601-93E3-4150-AC5E-6D708EC13BD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTreaty.Data.DataAccess", "SmartTreaty.Data.DataAccess\SmartTreaty.Data.DataAccess.csproj", "{0E8010A1-8BA4-4478-896E-4C09CAED8FB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartTreaty.Data.DataAccess", "SmartTreaty.Data.DataAccess\SmartTreaty.Data.DataAccess.csproj", "{0E8010A1-8BA4-4478-896E-4C09CAED8FB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmarTreaty.Business.Services", "SmarTreaty.Business.Services\SmarTreaty.Business.Services.csproj", "{2305CC70-C96E-41DF-8C7A-8E0396D65ECC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmarTreaty.Business.Services", "SmarTreaty.Business.Services\SmarTreaty.Business.Services.csproj", "{2305CC70-C96E-41DF-8C7A-8E0396D65ECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmarTreaty.Common.DomainModel", "SmarTreaty.Common.DomainModel\SmarTreaty.Common.DomainModel.csproj", "{F81DCCA8-49EE-448D-8086-7AA0A1623580}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmarTreaty.Common.DomainModel", "SmarTreaty.Common.DomainModel\SmarTreaty.Common.DomainModel.csproj", "{F81DCCA8-49EE-448D-8086-7AA0A1623580}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmarTreaty.Common.Core", "SmarTreaty.Common.Core\SmarTreaty.Common.Core.csproj", "{5A5CDB43-DA44-4BE0-BD04-DC745B9D3FAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmarTreaty.Common.Core", "SmarTreaty.Common.Core\SmarTreaty.Common.Core.csproj", "{5A5CDB43-DA44-4BE0-BD04-DC745B9D3FAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmarTreaty.Common.ViewModels", "SmarTreaty.Common.ViewModels\SmarTreaty.Common.ViewModels.csproj", "{DEE38453-D348-4768-A8BF-5011F65A350C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{5A5CDB43-DA44-4BE0-BD04-DC745B9D3FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A5CDB43-DA44-4BE0-BD04-DC745B9D3FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A5CDB43-DA44-4BE0-BD04-DC745B9D3FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEE38453-D348-4768-A8BF-5011F65A350C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEE38453-D348-4768-A8BF-5011F65A350C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEE38453-D348-4768-A8BF-5011F65A350C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEE38453-D348-4768-A8BF-5011F65A350C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{2305CC70-C96E-41DF-8C7A-8E0396D65ECC} = {03012914-9905-46A4-BD34-C1B281DC273D}
 		{F81DCCA8-49EE-448D-8086-7AA0A1623580} = {9C59ABF5-A135-489A-9FCE-0B8620CF0E7C}
 		{5A5CDB43-DA44-4BE0-BD04-DC745B9D3FAF} = {9C59ABF5-A135-489A-9FCE-0B8620CF0E7C}
+		{DEE38453-D348-4768-A8BF-5011F65A350C} = {9C59ABF5-A135-489A-9FCE-0B8620CF0E7C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A79F7B52-F566-485C-850C-C04BDB290409}
