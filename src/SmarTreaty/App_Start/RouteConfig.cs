@@ -13,7 +13,7 @@ namespace SmarTreaty
             routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
-                new {controller = "Contracts", action = "Index"},
+                new {controller = "Contracts", action = "Index", id=UrlParameter.Optional},
                 namespaces: new [] { "SmarTreaty.Controllers" }
             );
         }
