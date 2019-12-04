@@ -243,7 +243,7 @@
     <Content Include="Areas\admin\Views\Users\Details.cshtml" />
     <Content Include="Areas\admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Users\Index.cshtml" />
-    <None Include="Properties\PublishProfiles\SmarTreaty20191203120622 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\smartreaty - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

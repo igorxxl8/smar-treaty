@@ -2,9 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
-    <TargetDatabaseName>smartreaty_db</TargetDatabaseName>
+    <TargetDatabaseName>smartreatydb</TargetDatabaseName>
     <DeployScriptFileName>SmarTreaty.Database.sql</DeployScriptFileName>
-    <TargetConnectionString>Data Source=smartreaty.database.windows.net;Persist Security Info=True;User ID=STAdmin;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False</TargetConnectionString>
+    <TargetConnectionString>Data Source=smartreatydbserver.database.windows.net;Persist Security Info=True;User ID=STAdmin;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
     <CreateNewDatabase>True</CreateNewDatabase>
