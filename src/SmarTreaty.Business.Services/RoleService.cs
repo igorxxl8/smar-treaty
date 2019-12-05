@@ -1,6 +1,6 @@
 ﻿using SmarTreaty.Common.Core.Helpers.Interfaces;
+using SmarTreaty.Common.Core.Services.Interfaces;
 using SmarTreaty.Common.DomainModel;
-using SmarTreaty.Core.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

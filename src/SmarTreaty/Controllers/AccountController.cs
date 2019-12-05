@@ -1,5 +1,4 @@
 ﻿using SmarTreaty.Common.DomainModel;
-using SmarTreaty.Core.Services.Interfaces;
 using SmarTreaty.Helpers;
 using SmarTreaty.Common.ViewModels.Accounts;
 using System;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using SmarTreaty.Common.Core.Services.Interfaces;
 
 namespace SmarTreaty.Controllers
 {

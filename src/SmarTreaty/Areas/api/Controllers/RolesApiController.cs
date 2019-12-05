@@ -1,6 +1,6 @@
 ﻿using SmarTreaty.Areas.api.Models.DTO;
+using SmarTreaty.Common.Core.Services.Interfaces;
 using SmarTreaty.Common.DomainModel;
-using SmarTreaty.Core.Services.Interfaces;
 using System.Linq;
 using System.Net;
 using System.Web.Http;

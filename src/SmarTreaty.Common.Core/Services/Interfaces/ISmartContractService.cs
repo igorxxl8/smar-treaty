@@ -1,7 +1,6 @@
 ﻿namespace SmarTreaty.Common.Core.Services.Interfaces
 {
-    public interface IBaseService
+    public interface ISmartContractService : IBaseService
     {
-        void Save();
     }
 }

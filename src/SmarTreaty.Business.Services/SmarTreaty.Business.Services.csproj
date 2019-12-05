@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Nethereum.Contracts" Version="3.4.0" />
+    <PackageReference Include="Nethereum.Web3" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SmarTreaty.Common.Core\SmarTreaty.Common.Core.csproj" />
     <ProjectReference Include="..\SmarTreaty.Common.DomainModel\SmarTreaty.Common.DomainModel.csproj" />
     <ProjectReference Include="..\SmartTreaty.Data.DataAccess\SmartTreaty.Data.DataAccess.csproj" />

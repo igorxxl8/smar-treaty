@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using PagedList;
-using SmarTreaty.Core.Services.Interfaces;
 using SmarTreaty.Common.DomainModel;
 using SmarTreaty.Common.ViewModels.Users;
+using SmarTreaty.Common.Core.Services.Interfaces;
 
 namespace SmarTreaty.Areas.admin.Controllers
 {

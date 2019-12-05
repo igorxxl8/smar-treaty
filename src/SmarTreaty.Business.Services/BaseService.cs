@@ -1,5 +1,5 @@
 ﻿using SmarTreaty.Common.Core.Helpers.Interfaces;
-using SmarTreaty.Core.Services.Interfaces;
+using SmarTreaty.Common.Core.Services.Interfaces;
 
 namespace SmarTreaty.Business.Services
 {

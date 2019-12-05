@@ -7,7 +7,7 @@ using Ninject.Web.Common;
 using Ninject.Web.Common.WebHost;
 using SmarTreaty.Business.Services;
 using SmarTreaty.Common.Core.Helpers.Interfaces;
-using SmarTreaty.Core.Services.Interfaces;
+using SmarTreaty.Common.Core.Services.Interfaces;
 using SmartTreaty.Data.DataAccess.Helpers;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SmarTreaty.App_Start.NinjectWebCommon), "Start")]
@@ -69,6 +69,8 @@ namespace SmarTreaty.App_Start
 
             kernel.Bind<IRoleService>().To<RoleService>().WithConstructorArgument(databaseWorkUnit);
             kernel.Bind<IUserService>().To<UserService>().WithConstructorArgument(databaseWorkUnit);
+            kernel.Bind<ITemplateService>().To<TemplateService>().WithConstructorArgument(databaseWorkUnit);
+            kernel.Bind<ISmartContractService>().To<SmartContractService>().WithConstructorArgument(databaseWorkUnit);
         }        
     }
 }

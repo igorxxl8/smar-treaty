@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmarTreaty.Common.DomainMod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmarTreaty.Common.Core", "SmarTreaty.Common.Core\SmarTreaty.Common.Core.csproj", "{5A5CDB43-DA44-4BE0-BD04-DC745B9D3FAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmarTreaty.Common.ViewModels", "SmarTreaty.Common.ViewModels\SmarTreaty.Common.ViewModels.csproj", "{DEE38453-D348-4768-A8BF-5011F65A350C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmarTreaty.Common.ViewModels", "SmarTreaty.Common.ViewModels\SmarTreaty.Common.ViewModels.csproj", "{DEE38453-D348-4768-A8BF-5011F65A350C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmarTreaty.Nethereum.TestApp", "SmarTreaty.Nethereum.TestApp\SmarTreaty.Nethereum.TestApp.csproj", "{E42CCE0D-3EED-4EF0-B41F-73C237C8F0CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{DEE38453-D348-4768-A8BF-5011F65A350C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEE38453-D348-4768-A8BF-5011F65A350C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEE38453-D348-4768-A8BF-5011F65A350C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E42CCE0D-3EED-4EF0-B41F-73C237C8F0CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E42CCE0D-3EED-4EF0-B41F-73C237C8F0CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E42CCE0D-3EED-4EF0-B41F-73C237C8F0CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E42CCE0D-3EED-4EF0-B41F-73C237C8F0CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

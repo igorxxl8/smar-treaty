@@ -9,7 +9,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using SmarTreaty.App_Start;
-using SmarTreaty.Core.Services.Interfaces;
+using SmarTreaty.Common.Core.Services.Interfaces;
 using SmarTreaty.Helpers;
 
 namespace SmarTreaty

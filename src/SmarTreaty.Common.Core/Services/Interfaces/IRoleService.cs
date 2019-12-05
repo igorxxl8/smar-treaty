@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using SmarTreaty.Common.DomainModel;
 
-namespace SmarTreaty.Core.Services.Interfaces
+namespace SmarTreaty.Common.Core.Services.Interfaces
 {
     public interface IRoleService : IBaseService
     {
