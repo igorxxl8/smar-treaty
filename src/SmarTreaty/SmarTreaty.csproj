@@ -186,6 +186,8 @@
     <Compile Include="Areas\api\Controllers\RolesApiController.cs" />
     <Compile Include="Areas\api\Models\DTO\RoleDTO.cs" />
     <Compile Include="Areas\api\Models\DTO\UserDTO.cs" />
+    <Compile Include="Areas\editor\Controllers\EditorController.cs" />
+    <Compile Include="Areas\editor\Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContractsController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -243,6 +245,11 @@
     <Content Include="Areas\admin\Views\Users\Details.cshtml" />
     <Content Include="Areas\admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\editor\Views\web.config" />
+    <Content Include="Areas\editor\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\editor\Views\Templates\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\smartreaty - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\smartreaty - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\smartreaty - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -299,6 +306,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Areas\api\Views\Shared\" />
+    <Folder Include="Areas\editor\Models\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

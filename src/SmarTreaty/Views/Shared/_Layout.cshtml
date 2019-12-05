@@ -18,14 +18,14 @@
                     <h3>
                         @Html.ActionLink("SmarTreaty", "Index", "Home", new { area = "" }, new { @class = "navbar-brand nav-link-a" })
                     </h3>
-                    
+
                     <div class="my-auto">
                         <nav class="navbar bg-light">
                             <a class="dropdown-toggle" href="#" data-toggle="collapse" role="button" data-target="#navbarUser" aria-controls="navbarUser" aria-expanded="true" aria-label="Toggle navigation">
                                 @HttpContext.Current.User.Identity.Name
                             </a>
                             <div class="dropdown-menu" id="navbarUser">
-                                @Html.ActionLink("Sign out", "SignOut", "Account", new {area = ""}, new {@class = "dropdown-item"})
+                                @Html.ActionLink("Sign out", "SignOut", "Account", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </nav>
                     </div>
@@ -39,33 +39,45 @@
                 <hr />
             </div>
         </div>
-        
+
         <div>
             <ul style="list-style: none; padding: 0;">
                 <li>
-                    @Html.ActionLink("Contracts", "Index", "Contracts", new {area = ""}, new {@class = "h4 nav-link nav-link-a"})
+                    @Html.ActionLink("Contracts", "Index", "Contracts", new { area = "" }, new { @class = "h4 nav-link nav-link-a" })
                 </li>
             </ul>
         </div>
-        
+
         @if (HttpContext.Current.User.IsInRole("admin"))
         {
+            <nav class="navbar bg-light">
+                <a class="nav-link-a h4 w-100" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                    Admin
+                </a>
+                <div class="navbar-collapse collapse" id="navbarAdmin">
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Users", "Index", "Users", new { area = "admin" }, new { @class = "h4 nav-link nav-link-a" })
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        }
 
-        <nav class="navbar bg-light">
-            <a class="nav-link-a h4 w-100" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-                Admin
-            </a>
-            <div class="navbar-collapse collapse show" id="navbarSupportedContent">
-                <ul>
-                    <li>
-                        @Html.ActionLink("Contracts", "Index", "Contracts", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
-                    </li>
-                    <li>
-                        @Html.ActionLink("Users", "Index", "Users", new {area = "admin"}, new {@class = "h4 nav-link nav-link-a"})
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        @if (HttpContext.Current.User.IsInRole("editor"))
+        {
+            <nav class="navbar bg-light">
+                <a class="nav-link-a h4 w-100" data-toggle="collapse" data-target="#navbarEditor" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                    Editor
+                </a>
+                <div class="navbar-collapse collapse" id="navbarEditor">
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Templates", "Index", "Templates", new { area = "editor" }, new { @class = "h4 nav-link nav-link-a" })
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         }
     </nav>
 </aside>
