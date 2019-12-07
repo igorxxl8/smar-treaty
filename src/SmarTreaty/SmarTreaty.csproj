@@ -193,6 +193,8 @@
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TemplatesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Enums\CoursePlanningMethodEnum.cs" />
     <Compile Include="Enums\CourseTypeEnum.cs" />
     <Compile Include="Global.asax.cs">
@@ -301,6 +303,13 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Web.config" />
     <Content Include="Views\Contracts\Index.cshtml" />
+    <Content Include="Views\Contracts\Create.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Templates\Create.cshtml" />
+    <Content Include="Views\Templates\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

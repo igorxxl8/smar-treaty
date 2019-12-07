@@ -30,3 +30,122 @@
     select,
     textarea { max-width: 780px; }
 }
+
+.table_container {
+    padding: 10px 0px;
+    min-width: 600px;
+}
+
+.table_container table {
+    word-break: break-all;
+}
+
+.filters_container {
+    padding: 10px 0px;
+}
+
+.filter input {
+    width: 300px;
+}
+
+.btn_group {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* _Layout */
+.left_nav_list {
+    margin-left: -40px;
+}
+
+.left_nav_list nav {
+    background-color: #f8f9fa;
+    padding-right: 0px;
+}
+
+.left_nav_list nav:hover {
+    background-color: lightgray;
+}
+
+.left_nav_list li {
+    list-style: none;
+}
+
+.left_nav_list li a.nav-link-a{
+    margin-bottom: 0;
+}
+
+.left_nav_list a.nav-link-a[aria-expanded="true"]{
+    margin-bottom: 10px;
+}
+
+/* _Layout END */
+
+/* Contracts */
+
+.contract_create_half_container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.contract_create_half_container > * {
+    width: 48%;
+}
+
+.contract_field {
+    margin-bottom: 10px;
+}
+
+/* Contracts END */
+/* Users */
+.users_table tr td:last-child {
+    background-color: #212529;
+    vertical-align: middle;
+    width: 150px;
+}
+
+.users_table tr td:last-child a {
+    width: 100%;
+}
+
+/* Users END */
+
+/* Templates */
+
+.templates_table tr td:last-child {
+    background-color: #212529;
+    vertical-align: middle;
+    width: 150px;
+}
+
+.templates_table tr td:last-child a {
+    width: 100%;
+}
+
+
+
+.templates_editor_container {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.templates_editor_container #codeTextarea {
+    width: 70%;
+    height: 800px;
+}
+
+.templates_editor_right_container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.templates_editor_right_container > * {
+    width: 80%; 
+    margin-left: 10%;
+}
+
+/* Templates END */

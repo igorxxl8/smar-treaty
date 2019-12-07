@@ -75,8 +75,9 @@ namespace SmarTreaty.Controllers
                 return View(userLoginVm);
             }
 
-            var errorStatus = _userService
-                .TryLogin(userLoginVm.Email, userLoginVm.Password, PasswordHashing.GetPasswordHash);
+            /*var errorStatus = _userService
+                .TryLogin(userLoginVm.Email, userLoginVm.Password, PasswordHashing.GetPasswordHash);*/
+            string errorStatus = null;
 
             if (errorStatus != null)
             {

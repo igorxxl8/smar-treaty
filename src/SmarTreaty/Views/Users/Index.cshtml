@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Users";
+}
+
+<div class="filters_container">
+    <div class="filter">
+        <h5>Search</h5>
+        <input class="form-control"/>
+    </div>
+</div>
+
+<div class="table_container">
+    <table class="table table-striped table-borderless users_table">
+        <thead>
+            <tr>
+                <th scope="col">Login</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Middle Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Login1</td>
+                <td>Vasil</td>
+                <td>Vasil</td>
+                <td>Vasil</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Users", new { id = 1 }, new { @class = "btn btn-outline-light" })
+                </td>
+            </tr>
+            <tr>
+                <td>Login2</td>
+                <td>Vasil</td>
+                <td>Vasil</td>
+                <td>Vasil</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Users", new { id = 2 }, new { @class = "btn btn-outline-light" })
+                </td>
+            </tr>
+            <tr>
+                <td>Login3</td>
+                <td>Vasil</td>
+                <td>Vasil</td>
+                <td>Vasil</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Users", new { id = 3 }, new { @class = "btn btn-outline-light" })
+                </td>
+            </tr>
+            <tr>
+                <td>Login4</td>
+                <td>Vasil</td>
+                <td>Vasil</td>
+                <td>Vasil</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Users", new { id = 4 }, new { @class = "btn btn-outline-light" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+

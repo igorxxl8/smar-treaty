@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Contract Create";
+}
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <div>
+        <h1 style="margin-bottom: 20px;">Contract /CONTRACT_TEMPLATE_NAME/</h1>
+        <div class="contract_create_half_container">
+            <div class="form-group">
+                <div class="contract_field">
+                    <h1>Name</h1>
+                    <input class="form-control" />
+                </div>
+                <div class="contract_field">
+                    <h1>Description</h1>
+                    <textarea class="form-control" style="height: 300px;"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <h1 style="margin-bottom: 15px;">Fields</h1>
+                <div class="contract_field">
+                    <h3>Field 1</h3>
+                    <input class="form-control" />
+                </div>
+                <div class="contract_field">
+                    <h3>Field 2</h3>
+                    <input class="form-control" />
+                </div>
+                <div class="contract_field">
+                    <h3>Field 3</h3>
+                    <input class="form-control" />
+                </div>
+                <div class="contract_field">
+                    <h3>Field 4</h3>
+                    <input class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-secondary btn-block">Create</button>
+}
