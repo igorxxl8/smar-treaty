@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SolcLib.Native" Version="0.4.25.32" />
+    <PackageReference Include="SolcNet" Version="1.1.107" />
+  </ItemGroup>
+
 </Project>
