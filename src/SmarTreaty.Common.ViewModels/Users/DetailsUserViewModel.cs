@@ -14,7 +14,7 @@ namespace SmarTreaty.Common.ViewModels.Users
             MiddleName = user.MiddleName;
             Login = user.Login;
             RegistrationDate = user.RegistrationDate;
-            Wallet = user.Wallet;
+            Wallet = user.PrivateKey;
         }
 
         public Guid Id { get; set; }

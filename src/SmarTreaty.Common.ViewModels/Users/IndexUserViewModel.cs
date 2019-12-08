@@ -10,7 +10,7 @@ namespace SmarTreaty.Common.ViewModels.Users
         {
             Id = user.Id;
             Name = user.FirstName + " " + user.LastName + " " + user.MiddleName;
-            Wallet = user.Wallet;
+            Wallet = user.PrivateKey;
             RegistrationDate = user.RegistrationDate;
         }
 

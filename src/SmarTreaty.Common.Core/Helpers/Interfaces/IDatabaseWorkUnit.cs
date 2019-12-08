@@ -8,6 +8,8 @@ namespace SmarTreaty.Common.Core.Helpers.Interfaces
     {
         IRepository<User, Guid> Users { get; }
         IRepository<Role, int> Roles { get; }
+        IRepository<Template, Guid> Templates { get; }
+        IRepository<Contract, Guid> Contracts { get; }
         void Save();
         void Discard();
     }

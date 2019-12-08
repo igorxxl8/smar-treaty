@@ -5,6 +5,6 @@ namespace SmarTreaty.Common.Core.Services.Interfaces
 {
     public interface ISmartContractService : IBaseService
     {
-        Task DeployContract(SmartContract contract, params object[] values);
+        Task DeployContract(Template template, string privateKey, params object[] values);
     }
 }

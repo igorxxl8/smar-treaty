@@ -6,10 +6,10 @@ namespace SmarTreaty.Common.Core.Services.Interfaces
 {
     public interface ITemplateService : IBaseService
     {
-        ICollection<Template> GetTemplatesByEditor(Guid editorId);
-        void AddTemplate(Template template);
-        void EditeTemplate(Template template);
-        void DeleteTemplate(Template template);
+        ICollection<Contract> GetTemplatesByEditor(Guid editorId);
+        void AddTemplate(Contract template);
+        void EditeTemplate(Contract template);
+        void DeleteTemplate(Contract template);
         void DeleteTemplate(Guid id);
         void PublishTemplate(Guid id);
     }

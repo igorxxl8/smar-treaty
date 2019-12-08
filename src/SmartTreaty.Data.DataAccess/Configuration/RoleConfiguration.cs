@@ -3,7 +3,7 @@ using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
 using SmarTreaty.Common.DomainModel;
 
-namespace SmarTreaty.Business.Data.Configuration
+namespace SmartTreaty.Data.DataAccess.Configuration
 {
     public class RoleConfiguration : EntityTypeConfiguration<Role>
     {
@@ -17,7 +17,7 @@ namespace SmarTreaty.Business.Data.Configuration
                 .IsRequired()
                 .HasMaxLength(MaxLength)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                    new IndexAnnotation(new IndexAttribute("IX_Name") {IsUnique = true}));
+                    new IndexAnnotation(new IndexAttribute("IX_Name") { IsUnique = true }));
 
             HasMany(r => r.Users)
                 .WithMany(u => u.Roles)

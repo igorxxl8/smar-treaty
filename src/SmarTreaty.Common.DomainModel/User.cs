@@ -12,8 +12,7 @@ namespace SmarTreaty.Common.DomainModel
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public DateTime RegistrationDate { get; set; }
-        public string Wallet { get; set; }
-        public string PrivateKey { get; set; } // Replace this on Wallet 
+        public string PrivateKey { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
     }
 }

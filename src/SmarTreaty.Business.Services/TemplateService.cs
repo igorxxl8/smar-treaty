@@ -12,12 +12,12 @@ namespace SmarTreaty.Business.Services
         {
         }
 
-        public void AddTemplate(Template template)
+        public void AddTemplate(Contract template)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteTemplate(Template template)
+        public void DeleteTemplate(Contract template)
         {
             throw new NotImplementedException();
         }
@@ -27,12 +27,12 @@ namespace SmarTreaty.Business.Services
             throw new NotImplementedException();
         }
 
-        public void EditeTemplate(Template template)
+        public void EditeTemplate(Contract template)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<Template> GetTemplatesByEditor(Guid editorId)
+        public ICollection<Contract> GetTemplatesByEditor(Guid editorId)
         {
             throw new NotImplementedException();
         }
