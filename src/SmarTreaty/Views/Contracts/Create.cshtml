@@ -1,0 +1,61 @@
+﻿@model List<Dictionary<string, string>>
+
+@{
+    ViewBag.Title = "Contract Create";
+}
+
+<div>
+    <h1 style="margin-bottom: 20px;">Contract /CONTRACT_TEMPLATE_NAME/</h1>
+    <div class="contract_create_half_container">
+        <div class="form-group">
+            <div class="contract_field">
+                <h1 class="contract_field_label">Title</h1>
+                <input class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <h1 style="margin-bottom: 15px;">Fields</h1>
+            @foreach (var field in Model)
+            {
+                <div class="contract_field">
+                    @switch (field["type"])
+                    {
+                        case "int256":
+                            <h3 class="contract_field_label">@field["name"]</h3>
+                            <input class="form-control" />
+                            break;
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<button id="createButton" class="btn btn-secondary btn-block">Create</button>
+
+@section scripts {
+    <script type="text/javascript" language="javascript">
+        $(document).ready(() => {
+            $('#createButton').click(function () {
+                data = [];
+                $('.contract_field').each(function (index, field) {
+                    name = $(field).find('.contract_field_label').html();
+                    value = $(field).find('input').val();
+                    data.push({ name: name, value: value });
+                });
+                $.ajax(
+                    {
+                        async: true,
+                        url: `/Contracts/Create`,
+                        method: "POST",
+                        crossDomain: true,
+                        processData: false,
+                        headers: {
+                            "content-type": "application/json"
+                        },
+                        data: JSON.stringify(data)
+                    });
+            });
+        });
+    </script>
+}

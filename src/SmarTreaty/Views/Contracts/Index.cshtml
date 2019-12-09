@@ -1,6 +1,41 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Contracts";
 }
 
+<div class="solo_button_container">
+    @Html.ActionLink("Create Contract", "Templates", "Contracts", new { }, new { @class = "btn btn-secondary btn-block" })
+</div>
 
+<div class="table_container">
+    <table class="table table-striped table-borderless contracts_table">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 200px;">Name</th>
+                <th scope="col" style="width: 150px;">Creation Date</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Name1</td>
+                <td>11.11.2019</td>
+                <td>Some description</td>
+            </tr>
+            <tr>
+                <td>Name2</td>
+                <td>12.11.2019</td>
+                <td>Another description</td>
+            </tr>
+            <tr>
+                <td>Name3</td>
+                <td>13.11.2019</td>
+                <td>Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Description</td>
+            </tr>
+            <tr>
+                <td>Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Name</td>
+                <td>14.11.2019</td>
+                <td>Description4</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

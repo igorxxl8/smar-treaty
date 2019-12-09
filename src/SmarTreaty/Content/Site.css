@@ -30,3 +30,51 @@
     select,
     textarea { max-width: 780px; }
 }
+
+.body-content {
+    margin: 30px 65px;
+}
+
+.table_container {
+    padding: 10px 0px;
+    min-width: 600px;
+}
+
+    .table_container table {
+        word-break: break-all;
+    }
+
+.solo_button_container {
+    margin-bottom: 20px;
+}
+
+
+
+
+/* CONTRACTS START */
+
+.contract_create_half_container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+    .contract_create_half_container > * {
+        width: 48%;
+    }
+
+.contract_field {
+    margin-bottom: 10px;
+}
+
+.select_template_table tr td:last-child {
+    background-color: #212529;
+    vertical-align: middle;
+    width: 150px;
+}
+
+    .select_template_table tr td:last-child a {
+        width: 100%;
+    }
+
+/* CONTRACTS END */

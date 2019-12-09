@@ -310,6 +310,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Web.config" />
     <Content Include="Views\Contracts\Index.cshtml" />
+    <Content Include="Views\Contracts\Templates.cshtml" />
+    <Content Include="Views\Contracts\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
