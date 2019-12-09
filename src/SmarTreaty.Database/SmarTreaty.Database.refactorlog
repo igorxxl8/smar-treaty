@@ -21,4 +21,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="UserId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="4891d453-b19f-48c2-b1b3-8e0209512819" ChangeDateTime="12/09/2019 21:06:36">
+    <Property Name="ElementName" Value="[dbo].[SmartContract].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SmartContract]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SmartContractID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aea97927-e020-4b03-8ee6-44aa60fda3a7" ChangeDateTime="12/09/2019 21:13:31">
+    <Property Name="ElementName" Value="[dbo].[Contract].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Contract]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ContractID" />
+  </Operation>
 </Operations>

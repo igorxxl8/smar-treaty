@@ -15,6 +15,8 @@ namespace SmartTreaty.Data.DataAccess.Helpers
         private readonly DataContext _context;
         private IRepository<User, Guid> _userRepository;
         private IRepository<Role, int> _roleRepository;
+        private IRepository<SmartContract, Guid> _smartRepository;
+        private IRepository<Contract, Guid> _contractRepository;
 
         public DatabaseWorkUnit(string connectionString)
         {
@@ -26,6 +28,12 @@ namespace SmartTreaty.Data.DataAccess.Helpers
 
         public IRepository<Role, int> Roles =>
             _roleRepository ?? (_roleRepository = new Repository<Role, int>(_context));
+
+        public IRepository<SmartContract, Guid> SmartContracts =>
+            _smartRepository ?? (_smartRepository = new Repository<SmartContract, Guid>(_context));
+
+        public IRepository<Contract, Guid> Contracts =>
+            _contractRepository ?? (_contractRepository = new Repository<Contract, Guid>(_context));
 
         public void Save()
         {

@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Contract]
+(
+	[ContractID] UNIQUEIDENTIFIER NOT NULL, 
+    [Address] NVARCHAR(50) NOT NULL, 
+    CONSTRAINT [PK_Contract] PRIMARY KEY CLUSTERED ([ContractID] ASC)
+)

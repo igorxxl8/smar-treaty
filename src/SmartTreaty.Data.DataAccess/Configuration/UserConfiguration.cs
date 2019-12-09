@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Infrastructure.Annotations;
+using SmarTreaty.Business.Data.Configuration;
 using SmarTreaty.Common.DomainModel;
 
-namespace SmarTreaty.Business.Data.Configuration
+namespace SmartTreaty.Data.DataAccess.Configuration
 {
     public class UserConfiguration : BaseEntityConfiguration<User>
     {
@@ -14,7 +15,7 @@ namespace SmarTreaty.Business.Data.Configuration
                 .IsRequired()
                 .HasMaxLength(MaxLength)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                    new IndexAnnotation(new IndexAttribute("IX_Login") {IsUnique = true}));
+                    new IndexAnnotation(new IndexAttribute("IX_Login") { IsUnique = true }));
 
             Property(u => u.PasswordHash)
                 .IsRequired()
