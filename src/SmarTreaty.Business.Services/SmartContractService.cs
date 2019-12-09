@@ -5,26 +5,39 @@ using SmarTreaty.Common.Core.Helpers.Interfaces;
 using SmarTreaty.Common.Core.Services.Interfaces;
 using SmarTreaty.Common.DomainModel;
 using System;
+using System.Configuration;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace SmarTreaty.Business.Services
 {
     public class SmartContractService : BaseService, ISmartContractService
     {
-        private string _privateKey;
-        private string _endndpointUrl = "http://testchain.nethereum.com:8545";  // TODO move it to config
+        private readonly string _endpointUrl = ConfigurationManager.AppSettings["ChainEndpoint"];
+        private readonly string _compilerUrl = ConfigurationManager.AppSettings["CompilerApi"];
+        private static readonly HttpClient client = new HttpClient();
 
         public SmartContractService(IDatabaseWorkUnit db) : base(db)
         {
-            // TODO get private key from db
-            _privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
+
         }
 
-
-        public async Task DeployContract(SmartContract contract, params object[] values)
+        public async Task<string> CompileContract(string source)
         {
-            var account = new Account(_privateKey);
-            var web3 = new Web3(account, _endndpointUrl);
+            HttpResponseMessage response = await client.GetAsync($"{_compilerUrl}?source={source}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+
+            return null;
+        }
+
+        public async Task DeployContract(SmartContract contract, string privateKey, params object[] values)
+        {
+            var account = new Account(privateKey);
+            var web3 = new Web3(account, _endpointUrl);
 
             var estimatedGas = await EstimateGas(web3, contract, account.Address);
             var contractAddress = await TryDeployContract(web3, contract, account.Address, estimatedGas, values);
