@@ -7,6 +7,7 @@ using SmarTreaty.Common.DomainModel;
 using System;
 using System.Configuration;
 using System.Net.Http;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace SmarTreaty.Business.Services
@@ -38,18 +39,29 @@ namespace SmarTreaty.Business.Services
         {
             var account = new Account(privateKey);
             var web3 = new Web3(account, _endpointUrl);
+            var totalSupply = BigInteger.Parse("1000000000000000000");
 
-            var estimatedGas = await EstimateGas(web3, contract, account.Address);
+            contract.Abi = contract.Abi
+                .Replace("{\"value\":\"function\"}", "\"function\"")
+                .Replace(",\"components\":null,\"indexed\":null", "")
+                .Replace(",\"components\":null", "")
+                .Replace("\"type\":{\"value\":\"constructor\"}", "\"type\": \"constructor\"")
+                .Replace("\"stateMutability\":{\"value\":\"nonpayable\"}", "\"stateMutability\": \"nonpayable\"")
+                .Replace("\"name\": null,", "")
+                .Replace("\"outputs\": null,", "")
+                .Replace(",\"constant\": null,", "")
+                .Replace("\"anonymous\": null", "");
+            var estimatedGas = await EstimateGas(web3, contract, account.Address, totalSupply);
             var contractAddress = await TryDeployContract(web3, contract, account.Address, estimatedGas, values);
 
             // TODO save contractAddress to db
         }
 
-        private Task<HexBigInteger> EstimateGas(Web3 web3, SmartContract contract, string senderAddress)
+        private Task<HexBigInteger> EstimateGas(Web3 web3, SmartContract contract, string senderAddress, BigInteger totalSupply)
         {
             try
             {
-                return web3.Eth.DeployContract.EstimateGasAsync(contract.Abi, contract.ByteCode, senderAddress, new HexBigInteger(3000000));
+                return web3.Eth.DeployContract.EstimateGasAsync(contract.Abi, contract.ByteCode, senderAddress, totalSupply);
             }
             catch
             {
