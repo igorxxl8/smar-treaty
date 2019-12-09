@@ -40,7 +40,8 @@ namespace SmarTreaty.Business.Data.Configuration
                 .IsRequired()
                 .HasColumnType("date");
 
-            Property(u => u.Wallet)
+            Property(u => u.PrivateKey)
+                .HasColumnName("Wallet")
                 .HasMaxLength(MaxLength);
         }
     }

@@ -39,7 +39,7 @@ namespace SmarTreaty.Common.ViewModels.Accounts
                 LastName = LastName,
                 MiddleName = MiddleName,
                 RegistrationDate = DateTime.Now,
-                Wallet = Wallet
+                PrivateKey = Wallet
             };
         }
     }
