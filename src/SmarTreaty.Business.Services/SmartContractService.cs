@@ -6,18 +6,33 @@ using SmarTreaty.Common.Core.Services.Interfaces;
 using SmarTreaty.Common.DomainModel;
 using System;
 using System.Configuration;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace SmarTreaty.Business.Services
 {
     public class SmartContractService : BaseService, ISmartContractService
     {
-        private string _endndpointUrl = ConfigurationManager.AppSettings["TestChain"];
+        private readonly string _endndpointUrl = ConfigurationManager.AppSettings["TestChain"];
+        private readonly string _compilerUrl = ConfigurationManager.AppSettings["CompilerApi"];
+        private static readonly HttpClient client = new HttpClient();
 
         public SmartContractService(IDatabaseWorkUnit db) : base(db)
         {
         }
 
+
+        public async Task<string> CompileContract(string source)
+        {
+            HttpResponseMessage response = await client.GetAsync($"{_compilerUrl}?source={source}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+
+            return null;
+        }
 
         public async Task DeployContract(Template template, string privateKey, params object[] values)
         {
