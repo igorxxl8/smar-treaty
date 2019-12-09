@@ -30,3 +30,88 @@
     select,
     textarea { max-width: 780px; }
 }
+
+
+.body-content {
+    margin: 30px 65px;
+}
+
+.table_container {
+    padding: 10px 0px;
+    min-width: 600px;
+}
+
+.table_container table {
+    word-break: break-all;
+}
+
+.solo_button_container {
+    margin-bottom: 20px;
+}
+
+/* LAYOUT START */
+
+#sidebar-header {
+    height: 66px;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-family: 'Global Monospace';
+}
+
+.left_nav_list {
+    margin-top: 17px;
+    margin-left: -40px;
+}
+
+.left_nav_list nav {
+    background-color: #f8f9fa;
+    padding-right: 0px;
+}
+
+.left_nav_list nav:hover {
+    background-color: lightgray;
+}
+
+.left_nav_list li {
+    list-style: none;
+}
+
+.left_nav_list li a.nav-link-a{
+    margin-bottom: 0;
+}
+
+.left_nav_list a.nav-link-a[aria-expanded="true"]{
+    margin-bottom: 10px;
+}
+
+/* LAYOUT END */
+
+/* CONTRACTS START */
+
+.contract_create_half_container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+    .contract_create_half_container > * {
+        width: 48%;
+    }
+
+.contract_field {
+    margin-bottom: 10px;
+}
+
+.select_template_table tr td:last-child {
+    background-color: #212529;
+    vertical-align: middle;
+    width: 150px;
+}
+
+.select_template_table tr td:last-child a {
+    width: 100%;
+}
+
+/* CONTRACTS END */
