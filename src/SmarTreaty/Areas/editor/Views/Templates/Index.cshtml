@@ -1,6 +1,47 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Templates";
 }
 
+@Html.ActionLink("Create Template", "Create", "Templates", new { }, new { @class = "btn btn-secondary btn-block" })
 
+<div class="table_container">
+    <table class="table table-striped table-borderless templates_table">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 300px;">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Name1</td>
+                <td>Some description</td>
+                <td>
+                    @Html.ActionLink("Create", "Create", "Contracts", new { id = 1 }, new { @class = "btn btn-lg btn-outline-light" })
+                </td>
+            </tr>
+            <tr>
+                <td>Name2</td>
+                <td>Another description</td>
+                <td>
+                    @Html.ActionLink("Create", "Create", "Contracts", new { id = 2 }, new { @class = "btn btn-lg btn-outline-light" })
+                </td>
+            </tr>
+            <tr>
+                <td>Name3</td>
+                <td>Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Description</td>
+                <td>
+                    @Html.ActionLink("Create", "Create", "Contracts", new { id = 3 }, new { @class = "btn btn-lg btn-outline-light" })
+                </td>
+            </tr>
+            <tr>
+                <td>Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Name</td>
+                <td>Description4</td>
+                <td>
+                    @Html.ActionLink("Create", "Create", "Contracts", new { id = 4 }, new { @class = "btn btn-lg btn-outline-light" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

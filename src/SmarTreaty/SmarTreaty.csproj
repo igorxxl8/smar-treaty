@@ -257,6 +257,7 @@
     <Content Include="Areas\editor\Views\web.config" />
     <Content Include="Areas\editor\Views\_ViewStart.cshtml" />
     <Content Include="Areas\editor\Views\Templates\Index.cshtml" />
+    <Content Include="Areas\editor\Views\Templates\Create.cshtml" />
     <None Include="Properties\PublishProfiles\smartreaty - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\smartreaty - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\smartreaty - Web Deploy.pubxml" />

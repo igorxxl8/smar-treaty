@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Template Create";
+}
+
+<h1>Template Code</h1>
+
+
+@using (Html.BeginForm("Create", "Templates", FormMethod.Post))
+{
+    <div class="templates_editor_container">
+        <textarea class="form-control" id="codeTextarea"></textarea>
+
+        <div class="templates_editor_right_container">
+            <div style="margin-bottom: 15px;">
+                <h3>Name</h3>
+                <input class="form-control" />
+            </div>
+            <button class="btn btn-success">Verify</button>
+            <div style="display: flex; flex-direction: row; justify-content: center;">
+                <span style="margin-top: 5px;">Verified</span>
+                <input type="checkbox" class="form-control" style="width:30px;" disabled />
+            </div>
+            <button class="btn btn-secondary" style="margin-top: 50px;">Send</button>
+        </div>
+    </div>
+}

@@ -21,5 +21,25 @@ namespace SmarTreaty.Areas.editor.Controllers
         {
             return View();
         }
+
+        [Route("create")]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [Route("create")]
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
