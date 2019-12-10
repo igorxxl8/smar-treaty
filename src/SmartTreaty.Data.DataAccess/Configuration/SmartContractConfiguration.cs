@@ -10,6 +10,8 @@ namespace SmartTreaty.Data.DataAccess.Configuration
             HasKey(s => s.Id);
             Property(s => s.Abi);
             Property(s => s.ByteCode);
+            Property(s => s.Name);
+            HasRequired(s => s.User).WithMany(u => u.SmartContracts);
         }
     }
 }

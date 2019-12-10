@@ -15,5 +15,6 @@ namespace SmarTreaty.Common.DomainModel
         public string PrivateKey { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<Contract> Contracts { get; set; }
+        public virtual ICollection<SmartContract> SmartContracts { get; set; }
     }
 }
