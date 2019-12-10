@@ -62,6 +62,7 @@ namespace SmarTreaty.Areas.editor.Controllers
                 _smartContractService.SaveTemplate(new SmartContract
                 {
                     Id = Guid.NewGuid(),
+                    Name = model.Name,
                     User = user,
                     Abi = model.Abi,
                     ByteCode = model.ByteCode
