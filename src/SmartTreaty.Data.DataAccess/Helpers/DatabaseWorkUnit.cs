@@ -37,7 +37,15 @@ namespace SmartTreaty.Data.DataAccess.Helpers
 
         public void Save()
         {
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void Discard()

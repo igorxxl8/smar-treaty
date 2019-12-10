@@ -35,7 +35,7 @@ namespace SmarTreaty.Business.Services
             return null;
         }
 
-        public async Task DeployContract(SmartContract contract, string privateKey, params object[] values)
+        public async Task DeployContract(SmartContract contract, User user, string contractName, string privateKey, params object[] values)
         {
             var account = new Account(privateKey);
             var web3 = new Web3(account, _endpointUrl);
@@ -54,7 +54,15 @@ namespace SmarTreaty.Business.Services
             var estimatedGas = await EstimateGas(web3, contract, account.Address, totalSupply);
             var contractAddress = await TryDeployContract(web3, contract, account.Address, estimatedGas, values);
 
-            // TODO save contractAddress to db
+            Db.Contracts.Add(new Contract
+            {
+                Id = Guid.NewGuid(),
+                Address = contractAddress,
+                CreationDate = DateTime.Now,
+                Name = contractName,
+                User = user
+            });
+            Db.Save();
         }
 
         private Task<HexBigInteger> EstimateGas(Web3 web3, SmartContract contract, string senderAddress, BigInteger totalSupply)
@@ -94,6 +102,12 @@ namespace SmarTreaty.Business.Services
             {
                 throw new Exception("Cannot deploty contract");
             }
+        }
+
+        public void SaveTemplate(SmartContract smartContract)
+        {
+            Db.SmartContracts.Add(smartContract);
+            Db.Save();
         }
     }
 }

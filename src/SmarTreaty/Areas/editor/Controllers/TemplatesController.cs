@@ -3,6 +3,7 @@ using SmarTreaty.Common.Core.Services.Interfaces;
 using SmarTreaty.Common.DomainModel;
 using SmarTreaty.Common.ViewModels.Templates;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -13,10 +14,12 @@ namespace SmarTreaty.Areas.editor.Controllers
     public class TemplatesController : EditorController
     {
         private readonly ISmartContractService _smartContractService;
+        private readonly IUserService _userService;
 
-        public TemplatesController(ISmartContractService smartContractService)
+        public TemplatesController(ISmartContractService smartContractService, IUserService userService)
         {
             _smartContractService = smartContractService;
+            _userService = userService;
         }
 
         [Route("")]
@@ -55,18 +58,28 @@ namespace SmarTreaty.Areas.editor.Controllers
             }
             else
             {
-                try
+                var user = _userService.GetUsers(u => u.FirstName + " " + u.LastName == HttpContext.User.Identity.Name).FirstOrDefault();
+                _smartContractService.SaveTemplate(new SmartContract
                 {
-                    // TODO GET_PRIVATE_KEY
-                    await _smartContractService.DeployContract(new SmartContract { Abi = model.Abi, ByteCode = model.ByteCode, }, "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7", 0);
-                    return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    model.ErrorMessage = ex.Message;
+                    Id = Guid.NewGuid(),
+                    User = user,
+                    Abi = model.Abi,
+                    ByteCode = model.ByteCode
+                });
 
-                    return View(model);
-                }
+                return RedirectToAction("Index");
+                //try
+                //{
+                //    // TODO GET_PRIVATE_KEY
+                //    await _smartContractService.DeployContract(new SmartContract { Abi = model.Abi, ByteCode = model.ByteCode, }, "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7", 0);
+                //    return RedirectToAction("Index");
+                //}
+                //catch (Exception ex)
+                //{
+                //    model.ErrorMessage = ex.Message;
+
+                //    return View(model);
+                //}
             }
         }
     }
