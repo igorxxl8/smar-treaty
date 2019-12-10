@@ -81,7 +81,7 @@
 
 
 .templates_table tr td:last-child {
-    background-color: #212529;
+    /*background-color: #212529;*/
     vertical-align: middle;
     width: 150px;
 }
