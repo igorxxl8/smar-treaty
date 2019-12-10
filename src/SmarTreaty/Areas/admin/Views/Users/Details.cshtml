@@ -4,51 +4,74 @@
     ViewBag.Title = Model.FirstName + " " + Model.LastName;
 }
 
-<div class="px-2">
-    <div class="d-flex">
-        <dl class="dl-horizontal flex-fill">
+<div class="user_details_container">
+    <dl class="dl-horizontal flex-fill">
+        <div class="user_detail">
             <dt>
                 @Html.DisplayNameFor(model => model.FirstName)
             </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.FirstName)
-            </dd>
+            <div class="user_detil_value">
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+            </div>
+        </div>
 
+        <div class="user_detail">
             <dt>
                 @Html.DisplayNameFor(model => model.LastName)
             </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
+            <div class="user_detil_value">
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+            </div>
+        </div>
 
+        <div class="user_detail">
             <dt>
                 @Html.DisplayNameFor(model => model.Login)
             </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Login)
-            </dd>
+            <div class="user_detil_value">
+                <dd>
+                    @Html.DisplayFor(model => model.Login)
+                </dd>
+            </div>
+        </div>
 
+        <div class="user_detail">
             <dt>
                 @Html.DisplayNameFor(model => model.RegistrationDate)
             </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.RegistrationDate)
-            </dd>
+            <div class="user_detil_value">
+                <dd>
+                    @Html.DisplayFor(model => model.RegistrationDate)
+                </dd>
+            </div>
+        </div>
 
+        <div class="user_detail">
             <dt>
                 @Html.DisplayNameFor(model => model.Wallet)
             </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Wallet)
-            </dd>
+            <div class="user_detil_value">
+                <dd>
+                    @Html.DisplayFor(model => model.Wallet)
+                </dd>
+            </div>
+        </div>
 
+        <div class="btn-group" style="margin: 10px 0;">
+            <input type="button" onclick="history.back()" value="Back" class="btn btn-outline-secondary" />
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-secondary" })
+        </div>
 
-        </dl>
+    </dl>
         <dl class="flex-fill">
             <dd style="width: 300px;">
                 @{
@@ -57,10 +80,4 @@
                 }
             </dd>
         </dl>
-    </div>
-
-    <p>
-        <input type="button" onclick="history.back()" value="Back" class="btn btn-primary" />
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
-    </p>
 </div>

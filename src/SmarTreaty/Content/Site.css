@@ -46,6 +46,9 @@
 }
 
 .solo_button_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
@@ -96,9 +99,9 @@
     flex-direction: row;
 }
 
-    .contract_create_half_container > * {
-        width: 48%;
-    }
+.contract_create_half_container > * {
+    width: 48%;
+}
 
 .contract_field {
     margin-bottom: 10px;
@@ -115,3 +118,74 @@
 }
 
 /* CONTRACTS END */
+
+/* USERS START */
+
+.users_table tr td {
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+.users_table tr td:last-child {
+    background-color: #212529;
+}
+
+.users_table tr td:last-child a {
+    width: 96%;
+}
+
+.user_details_container {
+    width: 40%;
+    min-width: 600px;
+    margin: 0 auto;
+}
+
+.user_detail {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+}
+
+.user_detail dt {
+    background-color: #212529;
+    color: #f8f9fa;
+    width: 30%;
+    min-width: 250px;
+    padding: 0 20px;
+}
+
+.user_detail .user_detil_value {
+    text-align: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* USERS END */
+
+/* TEMPLATES START */
+
+.templates_editor_container {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.templates_editor_container #codeTextarea {
+    width: 70%;
+    height: 800px;
+}
+
+.templates_editor_right_container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.templates_editor_right_container > * {
+    width: 80%; 
+    margin-left: 10%;
+}
+
+/* TEMPLATES END */

@@ -21,5 +21,27 @@ namespace SmarTreaty.Areas.editor.Controllers
         {
             return View();
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(object templateViewModel)
+        {
+            // return validation error if not verified
+
+            try
+            {
+                //add template
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return HttpNotFound();
+            }
+        }
     }
 }

@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Template Create";
+}
+
+<h1>Template Code</h1>
+
+
+@using (Html.BeginForm("Create", "Templates", FormMethod.Post))
+{
+    <div class="templates_editor_container">
+        <textarea class="form-control" id="codeTextarea"></textarea>
+
+        <div class="templates_editor_right_container">
+            <div style="margin-bottom: 15px;">
+                <h3>Name</h3>
+                <input id="nameInput" class="form-control" />
+            </div>
+            <button id="verificationButton" class="btn btn-success">Verify</button>
+            <div style="display: flex; flex-direction: row; justify-content: center;">
+                <span style="margin-top: 5px;">Verified</span>
+                <input id="verificationCheckbox" type="checkbox" class="form-control" style="width:30px;" disabled />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+            <button class="btn btn-secondary" style="margin-top: 50px;">Send</button>
+            <input type="button" onclick="history.back()" value="Back" class="btn btn-outline-secondary" style="margin-top: 10px;"/>
+        </div>
+    </div>
+}
+
+@section scripts {
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+
+            $('#codeTextarea').change(function () {
+                $('#verificationCheckbox').prop('checked', false);
+            });
+
+            $('#verificationButton').click(function() {
+                var code = $('#codeTextarea').val();
+
+                $.ajax(
+                    {
+                        async: true,
+                        url: "URL"// put some url here,
+                        method: "PUT",
+                        crossDomain: true,
+                        processData: false,
+                        data: code,
+                        success: function() {
+                            $('#verificationCheckbox').prop('checked', true);
+                        }
+                    });
+            });
+
+            $('#verificationButton').click(function() {
+                var name = $('#nameInput').val();
+                var code = $('#codeTextarea').val();
+
+
+                var result = { name: name, code: code };
+                $.ajax(
+                    {
+                        async: true,
+                        url: "editors/Templates/Create/0",
+                        method: "POST",
+                        crossDomain: true,
+                        processData: false,
+                        data: JSON.stringify(result)
+                    });
+            });
+        });
+    </script>
+}

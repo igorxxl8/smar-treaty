@@ -12,17 +12,6 @@ namespace SmarTreaty.Controllers
     [RoutePrefix("contracts")]
     public class ContractsController : DefaultController
     {
-        private class ContractFunction
-        {
-            public class ContractInput
-            {
-                public string name { get; set; }
-                public string type { get; set; }
-            }
-
-            List<ContractInput> inputs { get; set; }
-        }
-
         private readonly ITemplateService _templateService;
 
         public ContractsController(ITemplateService templateService)
