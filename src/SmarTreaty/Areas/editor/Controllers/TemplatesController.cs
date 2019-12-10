@@ -47,11 +47,17 @@ namespace SmarTreaty.Areas.editor.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(CreateTemplateViewModel model)
         {
+            model.ErrorMessage = null;
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             if (!model.Verified)
             {
                 var compiledContractString = await _smartContractService.CompileContract(model.Source);
                 if (compiledContractString == null)
                 {
+                    model.ErrorMessage = "Cannot compile contract";
                     return View(model);
                 }
 
