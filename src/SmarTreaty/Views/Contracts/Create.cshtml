@@ -17,13 +17,8 @@
                 @foreach (var field in Model)
                 {
                     <div class="contract_field">
-                        @switch (field["type"])
-                        {
-                            case "int256":
-                                <h5 class="contract_field_label">@field["name"]</h5>
-                                <input class="form-control" />
-                                break;
-                        }
+                        <h5 class="contract_field_label">@field["name"]</h5>
+                        <input class="form-control" input_type="@field["type"]" />
                     </div>
                 }
             </div>
@@ -44,9 +39,10 @@
             $('#createButton').click(function () {
                 data = [{name: "templateId", value: "@ViewBag.TemplateId"}];
                 $('.contract_field').each(function (index, field) {
-                    name = $(field).find('.contract_field_label').html();
-                    value = $(field).find('input').val();
-                    data.push({ name: name, value: value });
+                    var name = $(field).find('.contract_field_label').html();
+                    var value = $(field).find('input').val();
+                    var type = $(field).find('input').attr('input_type');
+                    data.push({ name: name, value: value, type: type });
                 });
                 $.ajax(
                     {

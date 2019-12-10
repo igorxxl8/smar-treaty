@@ -80,7 +80,7 @@ namespace SmarTreaty.Business.Services
             {
                 return web3.Eth.DeployContract.EstimateGasAsync(contract.Abi, contract.ByteCode, senderAddress, totalSupply);
             }
-            catch
+            catch (Exception exception)
             {
                 throw new Exception("Cannot estimate gas");
             }
@@ -107,7 +107,7 @@ namespace SmarTreaty.Business.Services
 
                 return receipt.ContractAddress;
             }
-            catch
+            catch (Exception exception)
             {
                 throw new Exception("Cannot deploty contract");
             }

@@ -78,11 +78,14 @@ namespace SmarTreaty.Controllers
             var tokens = ((JArray)parsed.Find(x => ((JValue)((JProperty)((JObject)x["type"]).Children().First()).Value).Value.ToString() == "constructor")["inputs"]).Children();
             if (tokens.Count() > 0)
             {
-                List<JProperty> properties = tokens.First().Select(x => (JProperty)x).ToList();
-                fields.Add(new Dictionary<string, string>());
-                foreach (var property in properties.Take(2))
+                foreach (var token in tokens)
                 {
-                    fields.Last().Add(property.Name, ((JValue)property.Value).Value.ToString());
+                    List<JProperty> properties = token.Select(x => (JProperty)x).ToList();
+                    fields.Add(new Dictionary<string, string>());
+                    foreach (var property in properties.Take(2))
+                    {
+                        fields.Last().Add(property.Name, ((JValue)property.Value).Value.ToString());
+                    }
                 }
             }
 
