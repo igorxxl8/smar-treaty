@@ -113,7 +113,12 @@ namespace SmarTreaty.Controllers
 
             }
 
-            return RedirectToAction("Index", "Contracts");
+            var redirectUrl = Url.Action(nameof(Index));
+
+            return Json(new
+            {
+                redirectUrl = redirectUrl
+            });
         }
     }
 }

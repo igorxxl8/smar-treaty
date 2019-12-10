@@ -75,19 +75,7 @@ namespace SmarTreaty.Areas.editor.Controllers
                     ByteCode = model.ByteCode
                 });
 
-                return RedirectToAction("Index");
-                //try
-                //{
-                //    // TODO GET_PRIVATE_KEY
-                //    await _smartContractService.DeployContract(new SmartContract { Abi = model.Abi, ByteCode = model.ByteCode, }, "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7", 0);
-                //    return RedirectToAction("Index");
-                //}
-                //catch (Exception ex)
-                //{
-                //    model.ErrorMessage = ex.Message;
-
-                //    return View(model);
-                //}
+                return RedirectToAction("Index", "Templates");
             }
         }
     }
