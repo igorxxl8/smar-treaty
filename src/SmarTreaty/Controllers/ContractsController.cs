@@ -34,9 +34,23 @@ namespace SmarTreaty.Controllers
         }
 
         // GET: Contracts
-        public ActionResult Index()
+        [Route("")]
+        public ActionResult Index(DateTime? startDate, DateTime? endDate)
         {
-            return View();
+            var user = _userService.GetUsers(u => u.FirstName + " " + u.LastName == HttpContext.User.Identity.Name).FirstOrDefault();
+            var list = user.Contracts;
+
+            if (endDate != null)
+            {
+                list = list.Where(c => c.CreationDate <= endDate).ToList();
+            }
+
+            if (startDate != null)
+            {
+                list = list.Where(c => c.CreationDate >= startDate).ToList();
+            }
+
+            return View(list);
         }
 
         [Route("templates")]
@@ -51,7 +65,7 @@ namespace SmarTreaty.Controllers
             return View(templates.ToList());
         }
 
-        public ActionResult Create(int? templateId)
+        public ActionResult Create(Guid? templateId)
         {
             try
             {

@@ -1,41 +1,64 @@
-﻿@{
-    ViewBag.Title = "Contracts";
+﻿@model IEnumerable<SmarTreaty.Common.DomainModel.Contract>
+
+@{
+    ViewBag.Title = "Active Contracts";
 }
 
-<div class="solo_button_container">
-    @Html.ActionLink("Create Contract", "Templates", "Contracts", new { }, new { @class = "btn btn-secondary btn-block" })
+<div class="d-flex align-items-center" style="margin-top: -35px">
+    <div class="flex-fill mr-5">
+        @using (Html.BeginForm("Index", "Contracts", FormMethod.Get))
+        {
+            <div class="d-flex py-3">
+                @Html.TextBox("StartDate", null, new { type = "date", autocomplete = "off", @class = "form-control w-50 mr-3", placeholder = "" })
+                @Html.TextBox("EndDate", null, new { type = "date", autocomplete = "off", @class = "form-control w-50 mr-3", placeholder = "" })
+                <input class="btn btn-primary" type="submit" value="Search" />
+            </div>
+        }
+    </div>
+
+    <div class="flex-fill">
+        @Html.ActionLink("Create Contract", "Templates", "Contracts", new { }, new { @class = "btn btn-secondary btn-block" })
+    </div>
+
 </div>
 
-<div class="table_container">
-    <table class="table table-striped table-borderless contracts_table">
-        <thead>
+<table class="table table-bordered">
+    <thead class="table-warning">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Creation Date
+            </th>
+            <th>
+                Address
+            </th>
+        </tr>
+    </thead>
+
+
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3">No matches</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
             <tr>
-                <th scope="col" style="width: 200px;">Name</th>
-                <th scope="col" style="width: 150px;">Creation Date</th>
-                <th scope="col">Description</th>
+                <td style="width: 300px;">
+                    @item.Name
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Name1</td>
-                <td>11.11.2019</td>
-                <td>Some description</td>
-            </tr>
-            <tr>
-                <td>Name2</td>
-                <td>12.11.2019</td>
-                <td>Another description</td>
-            </tr>
-            <tr>
-                <td>Name3</td>
-                <td>13.11.2019</td>
-                <td>Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Description</td>
-            </tr>
-            <tr>
-                <td>Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Name</td>
-                <td>14.11.2019</td>
-                <td>Description4</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+        }
+    }
+</table>

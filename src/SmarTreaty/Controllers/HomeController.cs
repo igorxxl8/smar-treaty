@@ -23,23 +23,7 @@ namespace SmarTreaty.Controllers
         public ActionResult Index(DateTime? startDate, DateTime? endDate)
         {
             var user = _userService.GetUsers(u => u.FirstName + " " + u.LastName == HttpContext.User.Identity.Name).FirstOrDefault();
-            var list = new List<Contract>
-            {
-                new Contract
-                {
-                     Address = "LOL",
-                     CreationDate = DateTime.Now,
-                     User = user,
-                     Name = "Name"
-                },
-                new Contract
-                {
-                     Address = "LOL",
-                     CreationDate = DateTime.Now,
-                     User = user,
-                     Name = "Name2"
-                }
-            };
+            var list = user.Contracts;
 
             if (endDate != null)
             {
