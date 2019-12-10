@@ -8,7 +8,10 @@ namespace SmartTreaty.Data.DataAccess.Configuration
         public ContractConfiguration()
         {
             HasKey(c => c.Id);
+            Property(c => c.Name);
             Property(c => c.Address);
+            Property(c => c.CreationDate);
+            HasRequired(c => c.User).WithMany(u => u.Contracts);
         }
     }
 }

@@ -1,3 +1,120 @@
-﻿@{
-    ViewBag.Title = "History";
+﻿@model SmarTreaty.Common.ViewModels.Users.DetailsUserViewModel
+
+@{
+    ViewBag.Title = Model.FirstName + " " + Model.LastName;
 }
+
+<div class="px-2">
+    <div class="border border-dark p-3">
+        <div class="d-flex">
+            <dl class="flex-fill">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Login)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Login)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RegistrationDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RegistrationDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PrivateKey)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PrivateKey)
+                </dd>
+
+
+            </dl>
+            <dl class="flex-fill">
+                <dd style="width: 300px;">
+                    <img class="card-img-top" src="~/Content/img/default-user.jpg" />
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+
+    <br />
+    <div class="d-flex align-items-center">
+        <div>
+
+            <h3>Active Contracts</h3>
+        </div>
+        <div class="ml-auto">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+            {
+                <div class="d-flex py-3">
+                    @Html.TextBox("StartDate", null, new { type = "date", autocomplete = "off", @class = "form-control w-50 mr-3", placeholder = "" })
+                    @Html.TextBox("EndDate", null, new { type = "date", autocomplete = "off", @class = "form-control w-50 mr-3", placeholder = "" })
+                    <input class="btn btn-primary" type="submit" value="Search" />
+                </div>
+            }
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead class="table-warning">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Creation Date
+                </th>
+                <th>
+                    Address
+                </th>
+            </tr>
+        </thead>
+
+
+        @if (Model.Contracts.Count == 0)
+        {
+            <tr>
+                <td colspan="3">No matches</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model.Contracts)
+            {
+                <tr>
+                    <td style="width: 300px;">
+                        @item.Name
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+</div>

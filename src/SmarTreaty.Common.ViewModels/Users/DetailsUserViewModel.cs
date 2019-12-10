@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using SmarTreaty.Common.DomainModel;
 
@@ -14,7 +15,8 @@ namespace SmarTreaty.Common.ViewModels.Users
             MiddleName = user.MiddleName;
             Login = user.Login;
             RegistrationDate = user.RegistrationDate;
-            Wallet = user.PrivateKey;
+            PrivateKey = user.PrivateKey;
+            Contracts = user.Contracts;
         }
 
         public Guid Id { get; set; }
@@ -28,6 +30,9 @@ namespace SmarTreaty.Common.ViewModels.Users
         [Display(Name = "Registration Date")]
         [DataType(DataType.Date)]
         public DateTime RegistrationDate { get; set; }
-        public string Wallet { get; set; }
+        [Display(Name = "Wallet Private Key")]
+        public string PrivateKey { get; set; }
+
+        public ICollection<Contract> Contracts { get; set; }
     }
 }
