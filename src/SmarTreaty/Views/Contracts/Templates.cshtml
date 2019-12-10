@@ -1,57 +1,121 @@
 ﻿@model IEnumerable<SmarTreaty.Common.DomainModel.SmartContract>
-
 @{
     ViewBag.Title = "Templates";
 }
 
-<div class="table_container">
-    <table class="table table-striped table-borderless select_template_table">
-        <thead>
+<div class="d-flex align-items-center" style="margin-top: -35px">
+    <div class="flex-fill">
+        @using (Html.BeginForm("Templates", "Contracts", FormMethod.Get))
+        {
+            <div class="d-flex py-3">
+                @Html.TextBox("Search", null, new { autocomplete = "off", @class = "form-control w-50 mr-3", placeholder = "Type template name for search" })
+                <input class="btn btn-primary" type="submit" value="Search" />
+            </div>
+        }
+    </div>
+</div>
+
+
+<table class="table table-bordered">
+    <thead class="table-warning">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3">No matches</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
             <tr>
-                <th scope="col" style="width: 300px;">Name</th>
-                <th scope="col">Abi</th>
-                <th scope="col"></th>
+                <td style="width: 300px;">
+                    @item.Name
+                </td>
+                <td style="width: 50%">
+                    @item.Description
+                </td>
+                <td>
+                    @string.Format(item.User.FirstName + " " + item.User.LastName)
+                </td>
+                <td style="text-align: center">
+                    @Html.ActionLink("Choose", "Create", "Contracts", new { templateId = item.Id }, new { @class = "btn btn-lg btn-outline-success" })
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var template in Model)
-            {
+        }
+    }
+</table>
+
+@*@model IEnumerable<SmarTreaty.Common.DomainModel.SmartContract>
+
+    @{
+        ViewBag.Title = "Templates";
+    }
+
+    <div class="table_container">
+        <table class="table table-striped table-borderless select_template_table">
+            <thead>
                 <tr>
-                    <td>template_name</td>
-                    <td>template_abi</td>
+                    <th scope="col" style="width: 300px;">Name</th>
+                    <th scope="col">Abi</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var template in Model)
+                {
+                    <tr>
+                        <td>template_name</td>
+                        <td>template_abi</td>
+                        <td>
+                            @Html.ActionLink("Create", "Create", "Contracts", new { templateId = template.Id }, new { @class = "btn btn-lg btn-outline-light" })
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>Name1</td>
+                    <td>Abi1</td>
                     <td>
-                        @Html.ActionLink("Create", "Create", "Contracts", new { templateId = template.Id }, new { @class = "btn btn-lg btn-outline-light" })
+                        @Html.ActionLink("Create", "Create", "Contracts", new { templateId = 1 }, new { @class = "btn btn-lg btn-outline-light" })
                     </td>
                 </tr>
-            }
-            <tr>
-                <td>Name1</td>
-                <td>Abi1</td>
-                <td>
-                    @Html.ActionLink("Create", "Create", "Contracts", new { templateId = 1 }, new { @class = "btn btn-lg btn-outline-light" })
-                </td>
-            </tr>
-            <tr>
-                <td>Name2</td>
-                <td>Abi2</td>
-                <td>
-                    @Html.ActionLink("Create", "Create", "Contracts", new { templateId = 2 }, new { @class = "btn btn-lg btn-outline-light" })
-                </td>
-            </tr>
-            <tr>
-                <td>Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Name3</td>
-                <td>Abi3</td>
-                <td>
-                    @Html.ActionLink("Create", "Create", "Contracts", new { templateId = 3 }, new { @class = "btn btn-lg btn-outline-light" })
-                </td>
-            </tr>
-            <tr>
-                <td>Name4</td>
-                <td>Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Abi4</td>
-                <td>
-                    @Html.ActionLink("Create", "Create", "Contracts", new { templateId = 4 }, new { @class = "btn btn-lg btn-outline-light" })
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                <tr>
+                    <td>Name2</td>
+                    <td>Abi2</td>
+                    <td>
+                        @Html.ActionLink("Create", "Create", "Contracts", new { templateId = 2 }, new { @class = "btn btn-lg btn-outline-light" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Name3</td>
+                    <td>Abi3</td>
+                    <td>
+                        @Html.ActionLink("Create", "Create", "Contracts", new { templateId = 3 }, new { @class = "btn btn-lg btn-outline-light" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name4</td>
+                    <td>Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Abi4</td>
+                    <td>
+                        @Html.ActionLink("Create", "Create", "Contracts", new { templateId = 4 }, new { @class = "btn btn-lg btn-outline-light" })
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>*@

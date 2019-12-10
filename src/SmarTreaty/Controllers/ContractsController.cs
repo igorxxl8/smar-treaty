@@ -25,10 +25,12 @@ namespace SmarTreaty.Controllers
         }
 
         private readonly ISmartContractService _smartContractService;
+        private readonly IUserService _userService;
 
-        public ContractsController(ISmartContractService smartContractService)
+        public ContractsController(ISmartContractService smartContractService, IUserService userService)
         {
             _smartContractService = smartContractService;
+            _userService = userService;
         }
 
         // GET: Contracts
@@ -38,16 +40,15 @@ namespace SmarTreaty.Controllers
         }
 
         [Route("templates")]
-        public ActionResult Templates()
+        public ActionResult Templates(string search)
         {
-            try
+            var templates = _userService.GetUsers(properties: "SmartContracts").SelectMany(u => u.SmartContracts);
+            if (!string.IsNullOrEmpty(search))
             {
-                return View(new List<SmartContract>()); // need 'GetAllTemplates' method
+                templates = templates.Where(t => t.Name.Contains(search)).ToList();
             }
-            catch
-            {
-                return HttpNotFound();
-            }
+
+            return View(templates.ToList());
         }
 
         public ActionResult Create(int? templateId)
