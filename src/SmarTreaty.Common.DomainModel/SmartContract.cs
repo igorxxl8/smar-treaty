@@ -8,5 +8,6 @@ namespace SmarTreaty.Common.DomainModel
         public User User { get; set; }
         public string Abi { get; set; }
         public string ByteCode { get; set; }
+        public string Description { get; set; }
     }
 }
