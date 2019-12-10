@@ -65,48 +65,61 @@ namespace SmarTreaty.Controllers
             return View(templates.ToList());
         }
 
-        public ActionResult Create(Guid? templateId)
+        public ActionResult Create(Guid templateId)
         {
-            try
-            {
-                // call getTemplate API
-                string resultJson = "[{\"type\":{\"value\":\"function\"},\"name\":\"multiply\",\"inputs\":[{\"name\":\"val\",\"type\":\"int256\",\"components\":null,\"indexed\":null}],\"outputs\":[{\"name\":\"result\",\"type\":\"int256\",\"components\":null}],\"payable\":false,\"stateMutability\":{\"value\":\"nonpayable\"},\"constant\":false,\"anonymous\":null},{\"type\":{\"value\":\"function\"},\"name\":\"test_\",\"inputs\":[{\"name\":\"multiplier\",\"type\":\"int256\",\"components\":null,\"indexed\":null}],\"outputs\":[],\"payable\":false,\"stateMutability\":{\"value\":\"nonpayable\"},\"constant\":false,\"anonymous\":null},{\"type\":{\"value\":\"constructor\"},\"name\":null,\"inputs\":[],\"outputs\":null,\"payable\":false,\"stateMutability\":{\"value\":\"nonpayable\"},\"constant\":null,\"anonymous\":null}]";
-                var parsed = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(resultJson);
-                var parsedSOmething = JsonConvert.DeserializeObject(resultJson);
+            var template = _smartContractService.GetTemplate(templateId);
+            ViewBag.TemplateName = template.Name.Trim();
+            ViewBag.TemplateId = template.Id;
 
-                List<Dictionary<string, string>> fields = new List<Dictionary<string, string>>();
-                foreach (var tokens in parsed.Select(x => ((JArray)x["inputs"]).Select(y => y.Children())))
+            string resultJson = template.Abi;
+            var parsed = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(resultJson);
+
+            List<Dictionary<string, string>> fields = new List<Dictionary<string, string>>();
+
+            foreach (var tokens in parsed.Select(x => ((JArray)x["inputs"]).Select(y => y.Children())))
+            {
+                if (tokens.Count() > 0)
                 {
-                    if (tokens.Count() > 0)
+                    List<JProperty> properties = tokens.First().Select(x => (JProperty)x).ToList();
+                    fields.Add(new Dictionary<string, string>());
+
+                    foreach (var property in properties.Take(2))
                     {
-                        List<JProperty> properties = tokens.First().Select(x => (JProperty)x).ToList();
-                        fields.Add(new Dictionary<string, string>());
-                        foreach (var property in properties.Take(2))
-                            fields.Last().Add(property.Name, ((JValue)property.Value).Value.ToString());
+                        fields.Last().Add(property.Name, ((JValue)property.Value).Value.ToString());
+
                     }
                 }
+            }
 
-                return View(fields);
-            }
-            catch
-            {
-                return HttpNotFound();
-            }
+            return View(fields);
         }
 
         [HttpPost]
-        public ActionResult Create(List<Dictionary<string, string>> contractData)
+        public async Task<ActionResult> Create(List<Dictionary<string, string>> contractData)
         {
+            var templateId = contractData[0]["value"];
+
+            var contractName = contractData[1]["value"];
+            //var values = new object[contractData.Count - 2];
+            var values = 1;
+            //for (int i = 2; i < contractData.Count; i++)
+            //{
+            //    values[i - 2] = contractData[i]["value"];
+            //}
+
+            var template = _smartContractService.GetTemplate(Guid.Parse(templateId));
+            var user = _userService.GetUsers(u => u.FirstName + " " + u.LastName == HttpContext.User.Identity.Name).FirstOrDefault();
+
             try
             {
-                // use fields to create contract
-
-                return RedirectToAction("Index");
+                await _smartContractService.DeployContract(template, user, contractName, values);
             }
-            catch
+            catch (Exception ex)
             {
-                return HttpNotFound();
+
             }
+
+            return RedirectToAction("Index", "Contracts");
         }
     }
 }

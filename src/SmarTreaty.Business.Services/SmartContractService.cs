@@ -35,9 +35,9 @@ namespace SmarTreaty.Business.Services
             return null;
         }
 
-        public async Task DeployContract(SmartContract contract, User user, string contractName, string privateKey, params object[] values)
+        public async Task DeployContract(SmartContract contract, User user, string contractName, params object[] values)
         {
-            var account = new Account(privateKey);
+            var account = new Account(user.PrivateKey);
             var web3 = new Web3(account, _endpointUrl);
             var totalSupply = BigInteger.Parse("1000000000000000000");
 
@@ -108,6 +108,11 @@ namespace SmarTreaty.Business.Services
         {
             Db.SmartContracts.Add(smartContract);
             Db.Save();
+        }
+
+        public SmartContract GetTemplate(Guid id)
+        {
+            return Db.SmartContracts.GetById(id);
         }
     }
 }

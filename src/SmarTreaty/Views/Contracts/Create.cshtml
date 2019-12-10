@@ -1,20 +1,20 @@
 ﻿@model List<Dictionary<string, string>>
 
 @{
-    ViewBag.Title = "Contract Create";
+    ViewBag.Title = "Contract Publish";
 }
 
 <div>
-    <h1 style="margin-bottom: 20px;">Contract /CONTRACT_TEMPLATE_NAME/</h1>
+    <h3 style="margin-bottom: 20px;">Contract Template "@ViewBag.TemplateName"</h3>
     <div class="contract_create_half_container">
         <div class="form-group">
             <div class="contract_field">
-                <h1 class="contract_field_label">Title</h1>
+                <h3 class="contract_field_label">Name</h3>
                 <input class="form-control" />
             </div>
         </div>
         <div class="form-group">
-            <h1 style="margin-bottom: 15px;">Fields</h1>
+            <h3 style="margin-bottom: 15px;">Fields</h3>
             @foreach (var field in Model)
             {
                 <div class="contract_field">
@@ -31,13 +31,13 @@
     </div>
 </div>
 
-<button id="createButton" class="btn btn-secondary btn-block">Create</button>
+<button id="createButton" class="btn btn-success btn-block">Publish</button>
 
 @section scripts {
     <script type="text/javascript" language="javascript">
         $(document).ready(() => {
             $('#createButton').click(function () {
-                data = [];
+                data = [{name: "templateId", value: "@ViewBag.TemplateId"}];
                 $('.contract_field').each(function (index, field) {
                     name = $(field).find('.contract_field_label').html();
                     value = $(field).find('input').val();
