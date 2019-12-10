@@ -8,6 +8,7 @@ using System;
 using System.Configuration;
 using System.Net.Http;
 using System.Numerics;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SmarTreaty.Business.Services
@@ -25,6 +26,7 @@ namespace SmarTreaty.Business.Services
 
         public async Task<string> CompileContract(string source)
         {
+            source = Regex.Replace(source, @"[\r\n\t]", "");
             HttpResponseMessage response = await client.GetAsync($"{_compilerUrl}?source={source}");
 
             if (response.IsSuccessStatusCode)

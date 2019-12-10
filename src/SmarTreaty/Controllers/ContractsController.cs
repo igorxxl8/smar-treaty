@@ -75,19 +75,14 @@ namespace SmarTreaty.Controllers
             var parsed = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(resultJson);
 
             List<Dictionary<string, string>> fields = new List<Dictionary<string, string>>();
-
-            foreach (var tokens in parsed.Select(x => ((JArray)x["inputs"]).Select(y => y.Children())))
+            var tokens = ((JArray)parsed.Find(x => ((JValue)((JProperty)((JObject)x["type"]).Children().First()).Value).Value.ToString() == "constructor")["inputs"]).Children();
+            if (tokens.Count() > 0)
             {
-                if (tokens.Count() > 0)
+                List<JProperty> properties = tokens.First().Select(x => (JProperty)x).ToList();
+                fields.Add(new Dictionary<string, string>());
+                foreach (var property in properties.Take(2))
                 {
-                    List<JProperty> properties = tokens.First().Select(x => (JProperty)x).ToList();
-                    fields.Add(new Dictionary<string, string>());
-
-                    foreach (var property in properties.Take(2))
-                    {
-                        fields.Last().Add(property.Name, ((JValue)property.Value).Value.ToString());
-
-                    }
+                    fields.Last().Add(property.Name, ((JValue)property.Value).Value.ToString());
                 }
             }
 
@@ -100,12 +95,11 @@ namespace SmarTreaty.Controllers
             var templateId = contractData[0]["value"];
 
             var contractName = contractData[1]["value"];
-            //var values = new object[contractData.Count - 2];
-            var values = 1;
-            //for (int i = 2; i < contractData.Count; i++)
-            //{
-            //    values[i - 2] = contractData[i]["value"];
-            //}
+            var values = new object[contractData.Count - 2];
+            for (int i = 2; i < contractData.Count; i++)
+            {
+                values[i - 2] = contractData[i]["value"];
+            }
 
             var template = _smartContractService.GetTemplate(Guid.Parse(templateId));
             var user = _userService.GetUsers(u => u.FirstName + " " + u.LastName == HttpContext.User.Identity.Name).FirstOrDefault();
