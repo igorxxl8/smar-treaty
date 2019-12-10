@@ -49,6 +49,33 @@
 }
 
 
+/* _Layout */
+.left_nav_list {
+    margin-left: -40px;
+}
+
+    .left_nav_list nav {
+        background-color: #f8f9fa;
+        padding-right: 0px;
+    }
+
+        .left_nav_list nav:hover {
+            background-color: lightgray;
+        }
+
+    .left_nav_list li {
+        list-style: none;
+    }
+
+        .left_nav_list li a.nav-link-a {
+            margin-bottom: 10px;
+        }
+
+    .left_nav_list a.nav-link-a[aria-expanded="true"] {
+        margin-bottom: 10px;
+    }
+
+/* _Layout END */
 
 
 /* CONTRACTS START */
