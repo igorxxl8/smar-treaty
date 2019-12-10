@@ -42,8 +42,15 @@ namespace SmarTreaty.Business.Services
             var account = new Account(user.PrivateKey);
             var web3 = new Web3(account, _endpointUrl);
             var totalSupply = BigInteger.Parse("1000000000000000000");
-
-            contract.Abi = contract.Abi
+            var newContract = new SmartContract
+            {
+                Abi = contract.Abi,
+                ByteCode = contract.ByteCode,
+                Description = contract.Description,
+                User = contract.User,
+                Name = contract.Name
+            };
+            newContract.Abi = newContract.Abi
                 .Replace("{\"value\":\"function\"}", "\"function\"")
                 .Replace(",\"components\":null,\"indexed\":null", "")
                 .Replace(",\"components\":null", "")
@@ -53,8 +60,8 @@ namespace SmarTreaty.Business.Services
                 .Replace("\"outputs\": null,", "")
                 .Replace(",\"constant\": null,", "")
                 .Replace("\"anonymous\": null", "");
-            var estimatedGas = await EstimateGas(web3, contract, account.Address, totalSupply);
-            var contractAddress = await TryDeployContract(web3, contract, account.Address, estimatedGas, values);
+            var estimatedGas = await EstimateGas(web3, newContract, account.Address, totalSupply);
+            var contractAddress = await TryDeployContract(web3, newContract, account.Address, estimatedGas, values);
 
             Db.Contracts.Add(new Contract
             {
