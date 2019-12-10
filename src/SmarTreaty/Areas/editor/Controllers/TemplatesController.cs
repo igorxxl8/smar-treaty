@@ -23,9 +23,15 @@ namespace SmarTreaty.Areas.editor.Controllers
         }
 
         [Route("")]
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            return View();
+            var templates = _userService.GetUsers(u => u.FirstName + " " + u.LastName == HttpContext.User.Identity.Name).FirstOrDefault().SmartContracts;
+            if (!string.IsNullOrEmpty(search))
+            {
+                templates = templates.Where(t => t.Name.Contains(search)).ToList();
+            }
+
+            return View(templates.ToList());
         }
 
         [Route("create")]
@@ -63,6 +69,7 @@ namespace SmarTreaty.Areas.editor.Controllers
                 {
                     Id = Guid.NewGuid(),
                     Name = model.Name,
+                    Description = model.Description,
                     User = user,
                     Abi = model.Abi,
                     ByteCode = model.ByteCode
