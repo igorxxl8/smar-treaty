@@ -41,20 +41,17 @@ namespace SmarTreaty.Controllers
             try
             {
                 // call getTemplate API
-                string resultJson = "[{\"type\":{\"value\":\"function\"},\"name\":\"multiply\",\"inputs\":[{\"name\":\"val\",\"type\":\"int256\",\"components\":null,\"indexed\":null}],\"outputs\":[{\"name\":\"result\",\"type\":\"int256\",\"components\":null}],\"payable\":false,\"stateMutability\":{\"value\":\"nonpayable\"},\"constant\":false,\"anonymous\":null},{\"type\":{\"value\":\"function\"},\"name\":\"test_\",\"inputs\":[{\"name\":\"multiplier\",\"type\":\"int256\",\"components\":null,\"indexed\":null}],\"outputs\":[],\"payable\":false,\"stateMutability\":{\"value\":\"nonpayable\"},\"constant\":false,\"anonymous\":null},{\"type\":{\"value\":\"constructor\"},\"name\":null,\"inputs\":[],\"outputs\":null,\"payable\":false,\"stateMutability\":{\"value\":\"nonpayable\"},\"constant\":null,\"anonymous\":null}]";
+                string resultJson = "[{\"type\":{\"value\":\"function\"},\"name\":\"multiply\",\"inputs\":[{\"name\":\"val\",\"type\":\"int256\",\"components\":null,\"indexed\":null}],\"outputs\":[{\"name\":\"result\",\"type\":\"int256\",\"components\":null}],\"payable\":false,\"stateMutability\":{\"value\":\"nonpayable\"},\"constant\":false,\"anonymous\":null},{\"type\":{\"value\":\"function\"},\"name\":\"test_\",\"inputs\":[{\"name\":\"multiplier\",\"type\":\"int256\",\"components\":null,\"indexed\":null}],\"outputs\":[],\"payable\":false,\"stateMutability\":{\"value\":\"nonpayable\"},\"constant\":false,\"anonymous\":null},{\"type\":{\"value\":\"constructor\"},\"name\":null,\"inputs\":[{\"name\":\"val\",\"type\":\"int256\",\"components\":null,\"indexed\":null}],\"outputs\":null,\"payable\":false,\"stateMutability\":{\"value\":\"nonpayable\"},\"constant\":null,\"anonymous\":null}]";
                 var parsed = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(resultJson);
-                var parsedSOmething = JsonConvert.DeserializeObject(resultJson);
 
                 List<Dictionary<string, string>> fields = new List<Dictionary<string, string>>();
-                foreach (var tokens in parsed.Select(x => ((JArray)x["inputs"]).Select(y => y.Children())))
+                var tokens = ((JArray)parsed.Find(x => ((JValue)((JProperty)((JObject)x["type"]).Children().First()).Value).Value.ToString() == "constructor")["inputs"]).Children();
+                if (tokens.Count() > 0)
                 {
-                    if (tokens.Count() > 0)
-                    {
-                        List<JProperty> properties = tokens.First().Select(x => (JProperty)x).ToList();
-                        fields.Add(new Dictionary<string, string>());
-                        foreach (var property in properties.Take(2))
-                            fields.Last().Add(property.Name, ((JValue)property.Value).Value.ToString());
-                    }
+                    List<JProperty> properties = tokens.First().Select(x => (JProperty)x).ToList();
+                    fields.Add(new Dictionary<string, string>());
+                    foreach (var property in properties.Take(2))
+                        fields.Last().Add(property.Name, ((JValue)property.Value).Value.ToString());
                 }
 
                 return View(fields);
